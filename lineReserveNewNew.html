@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+  <title>RESERVATION MESSAGE</title>
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.2.45/css/materialdesignicons.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+<!-- <link rel="stylesheet" href="./style.css"> -->
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #e2e2e2;
+}
+
+svg {
+  position: fixed;
+  top: 10px;
+  left: 0px;
+}
+
+.container {
+  position: relative;
+  top: 60px;
+  display: block;
+  margin: 0 auto 80px auto;
+  width: 90%;
+  max-width: 500px;
+  background: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+h2 {
+  padding: 40px;
+  font-weight: lighter;
+  text-transform: uppercase;
+  color: #414141;
+}
+
+input {
+  display: block;
+  height: 60px;
+  width: 90%;
+  margin: 0 auto;
+  border: none;
+}
+.form input::placeholder {
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+.form input:hover, input:focus, input:active:focus {
+  color: #ff5722;
+  outline: none;
+  border-bottom: 1px solid #ff5722;
+}
+.form label.outer {
+      position: relative;
+      display: block;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: .5px;
+      color: #939393; }
+
+
+.email,
+.pwd {
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 20px;
+  font-family: 'Open Sans', sans-serif;
+  color: #858585;
+  font-weight: lighter;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+#requirement, #letter,  #letter_sup {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    color: #858585;
+    font-weight: lighter;
+    display: block;
+    height: 90px;
+    width: 90%;
+    margin: 0 auto;
+    resize: none;
+}
+#letter {
+  height: 120px;
+}
+#letter_sup {
+  height: 240px;
+}
+
+.link{
+  text-decoration:none;
+  display:block;
+  margin:10px;
+  text-align: center;
+  text-transform:uppercase;
+  color:#ff5722;
+  font-weight:lighter;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+.hint{
+  text-decoration:none;
+  display:block;
+  margin:10px;
+  text-align: left;
+  text-transform:uppercase;
+  color:#858585;
+  font-weight:lighter;
+  -webkit-transition:.5s;
+  transition:.5s;
+  font-size: 12px;
+}
+
+button {
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  width: 100%;
+  height: 60px;
+  margin-top: -10px;
+  border: none;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  -webkit-transition: .5s;
+  transition: .5s;
+  background: #e2e2e2;
+}
+
+button.sent {
+  background: #ff5722;
+}
+button span {
+  position: absolute;
+  display: block;
+  margin: -10px 20%;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+button:hover span {
+  -webkit-transform: translateX(30px);
+  transform: translateX(30px);
+}
+
+.reg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: translateY(-100%) scale(1);
+  transform: translateY(-100%) scale(1);
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  background: #673ab7;
+  z-index: 5;
+  -webkit-transition: .8s ease-in-out;
+  transition: .8s ease-in-out;
+}
+
+.sig {
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transform: translateY(-100%) scale(1);
+  transform: translateY(-100%) scale(1);
+  display: block;
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: #ff5722;
+  z-index: 5;
+  -webkit-transition: .8s ease-in-out;
+  transition: .8s ease-in-out;
+}
+
+h3 {
+  position: absolute;
+  top: -100%;
+  left: 20%;
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: rgba(255, 255, 255, 0.3);
+  -webkit-transition: .3s ease-in-out 1.2s;
+  transition: .3s ease-in-out 1.2s;
+}
+
+.booking-info {
+  margin: 30px;
+}
+.booking-info div {
+  display: flex;
+}
+.booking-info div label {
+  flex-basis: 80px;
+  font-size: 12px;;
+  align-items: center;
+  display: flex;
+}
+.booking-info div input {
+  flex: 1;
+}
+.book_type {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    background: darkseagreen;
+    color: #fff;
+    opacity: .5;
+}
+.book_type.active {
+  opacity: 1;
+}
+.bbq_version_item {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    background: olive;
+    color: #fff;
+    opacity: .5;
+    font-size: 14px;
+}
+.bbq_version_item.active {
+  opacity: 1;
+}
+
+.for_bbq_version_new > div {
+    width: 100%;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>預約訊息產生  <div>Hello, <span id="empolyee"></span></div></h2>
+  <div style="margin:0 30px; display:flex;">
+    <div class="room_book book_type">
+      <span>訂房</span>
+    </div>
+    <div class="bbq_book book_type">
+      <span>烤肉</span>
+    </div>
+    <div class="sup_book book_type">
+      <span>SUP</span>
+    </div>
+  </div>
+
+  <div id="sup_form" class="form">
+    <input type="hidden" id="lineUserId" class="email" placeholder="LineID">
+    <div class="booking-info">
+      <textarea id="letter_sup" placeholder="請直接貼上訊息，範例：
+              我要預約SUP活動，活動報名資訊已填寫如下，請幫我確認名額與預定： 
+        行程：馬武窟溪小冰島（上午場）
+        人數：3
+        我是主聯絡人：黃新亞, 郵件：milk011989@gmail.com, 電話：091056666, LINE：Mill 
+
+        全部報名成員資訊如下： > 黃新亞, 生日：1986-03-14, 身分證字號：V12233, 身高：165, 體重：42
+        > 黃心長, 生日：1979-03-14, 身分證字號：V0999, 身高：159, 體重：49
+        > 黃總讓, 生日：2021-07-14, 身分證字號：V666, 身高：174, 體重：88"></textarea>
+
+    <div><label for="sup_amount">總價</label><input type="number" id="sup_amount" class="email" value=""  placeholder="" readonly></div>
+    <div><label for="schedule">行程</label><input type="text" id="schedule" class="email" value=""  placeholder="" readonly></div>
+    <div><label for="schedule_base_price">行程單價</label><input type="text" id="schedule_base_price" class="email" value=""  placeholder="" readonly></div>
+    <div><label for="schedule_num">人數</label><input type="text" id="schedule_num" class="email" value=""  placeholder="" readonly></div>
+    <div><label for="mainGuest">主聯絡人</label><input type="text" id="mainGuest" class="email" value=""  placeholder="" readonly></div>
+    </div>
+    <br/>
+    <button type="button" class="register2 sent">
+      <span>送出</span>
+    </button>
+    <h3>訊息已送出 !</h3>
+    <div class="reg"></div>
+    <div class="sig"></div>
+  </div>
+
+  <div id="bbq_form" class="form">
+    <div id="bbq_version" style="margin:10px 50px; display:flex;">
+        <div class="bbq_version_item bbq_version_old">
+            <span>舊方案</span>
+        </div>
+        <div class="bbq_version_item bbq_version_new active">
+            <span>新方案NEW</span>
+        </div>
+    </div>
+    <input type="hidden" id="lineUserId" class="email" placeholder="LineID">
+    <div id="advanced" class="for_bbq_version_old" style="margin:30px;">
+      <div class="pretty p-icon p-smooth">
+        <input type="radio" id="b11" name="bbq" value="方案一 總價$1000" data-price="1000" />
+        <div class="state p-success">
+          <label for="b1">方案一 6人以下 清潔費總額$1000</label>
+        </div>
+      </div>
+
+      <div class="pretty p-icon p-smooth">
+        <input type="radio" id="b12" name="bbq" value="方案一 總價$1500" data-price="1500" />
+        <div class="state p-success">
+          <label for="b1">方案一 7-10人 清潔費總額$1500</label>
+        </div>
+      </div>
+
+      <div class="pretty p-icon p-smooth">
+        <input type="radio" id="b13" name="bbq" value="方案一" data-price="150" />
+        <div class="state p-success">
+          <label for="b1">方案一 清潔費$150/位</label>
+        </div>
+      </div>
+
+      <div class="pretty p-icon p-smooth">
+        <input type="radio" id="b21" name="bbq" value="方案二 $600" data-price="600" />
+        <div class="state p-success">
+          <label for="b21">方案二 $600</label>
+        </div>
+      </div>
+
+      <div class="pretty p-icon p-smooth">
+        <input type="radio" id="b22" name="bbq" value="方案二 $800"  data-price="800" />
+        <div class="state p-success">
+          <label for="b22">方案二 $800</label>
+        </div>
+      </div>
+
+      <div class="pretty p-icon p-smooth">
+        <input type="radio" id="b23" name="bbq"  value="方案二 總價$6000" data-price="6000"  />
+        <div class="state p-success">
+          <label for="b23">方案二 總價$6000(不足10位)</label><br>
+        </div>
+      </div>
+
+      <div class="pretty p-icon p-smooth">
+        <input type="radio" id="b3" name="bbq" value="方案三" data-price="900"/>
+        <div class="state p-success">
+          <i class="icon mdi mdi-check"></i>
+          <label for="b3">方案三</label>
+        </div>
+      </div>
+      
+      <!-- <div><input type="number" id="meatPerson" class="email" value=""  placeholder="烤肉份數" ></div>
+      <div><input type="number" id="cleanPerson" class="email" value=""  placeholder="清潔費人數" ></div> -->
+    </div>
+    <div id="advanced" class="for_bbq_version_new" style="margin:30px;">
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="nb11" name="newbbq" value="NEW方案一(6人以下) 總價$1500" data-code="nb11" data-price="1500" />
+            <div class="state p-success">
+                <label for="nb1">方案一 6人以下 清潔費$1500/總額</label>
+            </div>
+        </div>
+    
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="nb13" name="newbbq" value="NEW方案一(7人以上) 清潔費$200/位" data-code="nb12" data-price="200" />
+            <div class="state p-success">
+                <label for="nb1">方案一 7人以上 清潔費$200/位</label>
+            </div>
+        </div>
+    
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="nb2" name="newbbq" value="NEW方案二" data-code="nb2" data-price="0" />
+            <div class="state p-success">
+                <label for="nb2">方案二</label>
+            </div>
+        </div>
+        <div class="for_nb2" style="padding: 10px;background-color: ghostwhite;display:none;">
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="checkbox" id="nb2A" name="newbbqii" value="A菜單" data-price="5500" />
+                    <div class="state p-success">
+                        <label for="nb2A">菜單A</label>
+                        
+                    </div>
+                </div>
+                <select type="radio" id="nb2A_no" name="newbbqis" value="A菜單" data-price="5500">
+                    <option selected value=0>無</option>
+                    <option value=0.5>半份</option>
+                    <option value=1>1份</option>
+                    <option value=2>2份</option>
+                    <option value=3>3份</option>
+                    <option value=4>4份</option>
+                    <option value=5>5份</option>
+                </select>
+            </div>
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="checkbox" id="nb2B" name="newbbqii" value="B菜單" data-price="7000" />
+                    <div class="state p-success">
+                        <label for="nb2B">菜單B</label>
+            
+                    </div>
+                </div>
+                <select type="radio" id="nb2B_no" name="newbbqis" value="B菜單" data-price="7000">
+                    <option selected value=0>無</option>
+                    <option value="0.5">半份</option>
+                    <option value="1">1份</option>
+                    <option value="2">2份</option>
+                    <option value="3">3份</option>
+                    <option value="4">4份</option>
+                    <option value="5">5份</option>
+                </select>
+            </div>
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="checkbox" id="nb2C" name="newbbqii" value="C菜單" data-price="9000" />
+                    <div class="state p-success">
+                        <label for="nb2C">菜單C</label>
+            
+                    </div>
+                </div>
+                <select type="radio" id="nb2C_no" name="newbbqis" value="C菜單" data-price="9000">
+                    <option selected value=0>無</option>
+                    <option value="0.5">半份</option>
+                    <option value="1">1份</option>
+                    <option value="2">2份</option>
+                    <option value="3">3份</option>
+                    <option value="4">4份</option>
+                    <option value="5">5份</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="nb3" name="newbbq" value="NEW方案三" data-code="nb3" data-price="0" />
+            <div class="state p-success">
+                <label for="nb3">方案三</label>
+            </div>
+        </div>
+        <div class="for_nb3" style="padding: 10px;background-color: ghostwhite;display:none;">
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="radio" id=" nb3A" name="newbbqii" value="15~20人頭" data-price="20000" />
+                    <div class="state p-success">
+                        <label for="nb3A">15~20人頭 $20000 <small style="color:#666">[箱根 $16000]</small></label>
+
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="radio" id=" nb3B" name="newbbqii" value="21~25人頭" data-price="25000" />
+                    <div class="state p-success">
+                        <label for="nb3B">21~25人頭 $25000 <small style="color:#666">[箱根 $20000]</small></label>
+
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="radio" id=" nb3C" name="newbbqii" value="26~30人頭" data-price="30000" />
+                    <div class="state p-success">
+                        <label for="nb3C">26~30人頭 $30000  <small style="color:#666">[箱根 $24000]</small></label>
+                        
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="radio" id=" nb4C" name="newbbqii" value="31~40人頭" data-price="40000" />
+                    <div class="state p-success">
+                        <label for="nb4C">31~40人頭 $40000 <small style="color:#666">[箱根 $32000]</small></label>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div><input type="number" id="meatPerson" class="email" value="" placeholder="烤肉份數" style="display: none;"></div>
+    <div><input type="number" id="cleanPerson" class="email" value="" placeholder="清潔費人數" style="display: none;"></div>
+
+    <div id="advanced" class="for_bbq_version_new" style="margin:30px 10px;">
+        <div style="margin-top: 50px;">
+        <hr/>
+            <div>加購項</div>
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="checkbox" id="p1" name="purcase" value="冷泡茶1000cc. $100/瓶" data-price="100" />
+                    <div class="state p-success">
+                        <label for="p1">冷泡茶1000cc. $100/瓶</label>
+            
+                    </div>
+                </div>
+                <select type="radio" id="p1_no" name="purcaseis" value="" data-price="">
+                    <option selected value=0>無</option>
+                    <option value="1">1瓶</option>
+                    <option value="2">2瓶</option>
+                    <option value="3">3瓶</option>
+                    <option value="4">4瓶</option>
+                    <option value="5">5瓶</option>
+                    <option value="6">6瓶</option>
+                    <option value="7">7瓶</option>
+                    <option value="8">8瓶</option>
+                    <option value="9">9瓶</option>
+                    <option value="10">10瓶</option>
+                </select>
+            </div>
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="checkbox" id="p2" name="purcase" value="啤酒-海尼根(易開罐) $320/手" data-price="320" />
+                    <div class="state p-success">
+                        <label for="p2">啤酒-海尼根(易開罐) $320/手</label>
+            
+                    </div>
+                </div>
+                <select type="radio" id="p2_no" name="purcaseis" value="" data-price="">
+                    <option selected value=0>無</option>
+                    <option value="1">1手</option>
+                    <option value="2">2手</option>
+                    <option value="3">3手</option>
+                    <option value="4">4手</option>
+                    <option value="5">5手</option>
+                    <option value="6">6手</option>
+                    <option value="7">7手</option>
+                    <option value="8">8手</option>
+                    <option value="9">9手</option>
+                    <option value="10">10手</option>
+                </select>
+            </div>
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="checkbox" id="p3" name="purcase" value="啤酒-海尼根(易開罐) $1150/箱" data-price="1150" />
+                    <div class="state p-success">
+                        <label for="p3">啤酒-海尼根(易開罐) $1150/箱</label>
+            
+                    </div>
+                </div>
+                <select type="radio" id="p3_no" name="purcaseis" value="" data-price="">
+                    <option selected value=0>無</option>
+                    <option value="1">1箱</option>
+                    <option value="2">2箱</option>
+                    <option value="3">3箱</option>
+                    <option value="4">4箱</option>
+                    <option value="5">5箱</option>
+                    <option value="6">6箱</option>
+                    <option value="7">7箱</option>
+                    <option value="8">8箱</option>
+                    <option value="9">9箱</option>
+                    <option value="10">10箱</option>
+                </select>
+            </div>
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="checkbox" id="p4" name="purcase" value="啤酒-百威(易開罐) $320/手" data-price="320" />
+                    <div class="state p-success">
+                        <label for="p4">啤酒-百威(易開罐) $320/手</label>
+            
+                    </div>
+                </div>
+                <select type="radio" id="p4_no" name="purcaseis" value="" data-price="">
+                    <option selected value=0>無</option>
+                    <option value="1">1手</option>
+                    <option value="2">2手</option>
+                    <option value="3">3手</option>
+                    <option value="4">4手</option>
+                    <option value="5">5手</option>
+                    <option value="6">6手</option>
+                    <option value="7">7手</option>
+                    <option value="8">8手</option>
+                    <option value="9">9手</option>
+                    <option value="10">10手</option>
+                </select>
+            </div>
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="checkbox" id="p5" name="purcase" value="啤酒-百威(易開罐) $1150/箱" data-price="1150" />
+                    <div class="state p-success">
+                        <label for="p5">啤酒-百威(易開罐) $1150/箱</label>
+            
+                    </div>
+                </div>
+                <select type="radio" id="p5_no" name="purcaseis" value="" data-price="">
+                    <option selected value=0>無</option>
+                    <option value="1">1箱</option>
+                    <option value="2">2箱</option>
+                    <option value="3">3箱</option>
+                    <option value="4">4箱</option>
+                    <option value="5">5箱</option>
+                    <option value="6">6箱</option>
+                    <option value="7">7箱</option>
+                    <option value="8">8箱</option>
+                    <option value="9">9箱</option>
+                    <option value="10">10箱</option>
+                </select>
+            </div>
+
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="checkbox" id="p6" name="purcase" value="啤酒-金牌(易開罐) $280/手" data-price="280" />
+                    <div class="state p-success">
+                        <label for="p6">啤酒-金牌(易開罐) $280/手</label>
+            
+                    </div>
+                </div>
+                <select type="radio" id="p6_no" name="purcaseis" value="" data-price="">
+                    <option selected value=0>無</option>
+                    <option value="1">1手</option>
+                    <option value="2">2手</option>
+                    <option value="3">3手</option>
+                    <option value="4">4手</option>
+                    <option value="5">5手</option>
+                    <option value="6">6手</option>
+                    <option value="7">7手</option>
+                    <option value="8">8手</option>
+                    <option value="9">9手</option>
+                    <option value="10">10手</option>
+                </select>
+            </div>
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="checkbox" id="p7" name="purcase" value="啤酒-金牌(易開罐) $860/箱" data-price="860" />
+                    <div class="state p-success">
+                        <label for="p7">啤酒-金牌(易開罐) $860/箱</label>
+            
+                    </div>
+                </div>
+                <select type="radio" id="p7_no" name="purcaseis" value="" data-price="">
+                    <option selected value=0>無</option>
+                    <option value="1">1箱</option>
+                    <option value="2">2箱</option>
+                    <option value="3">3箱</option>
+                    <option value="4">4箱</option>
+                    <option value="5">5箱</option>
+                    <option value="6">6箱</option>
+                    <option value="7">7箱</option>
+                    <option value="8">8箱</option>
+                    <option value="9">9箱</option>
+                    <option value="10">10箱</option>
+                </select>
+            </div>
+
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="checkbox" id="p8" name="purcase" value="啤酒-霸(易開罐) $250/手" data-price="250" />
+                    <div class="state p-success">
+                        <label for="p8">啤酒-霸(易開罐) $250/手</label>
+            
+                    </div>
+                </div>
+                <select type="radio" id="p8_no" name="purcaseis" value="" data-price="">
+                    <option selected value=0>無</option>
+                    <option value="1">1手</option>
+                    <option value="2">2手</option>
+                    <option value="3">3手</option>
+                    <option value="4">4手</option>
+                    <option value="5">5手</option>
+                    <option value="6">6手</option>
+                    <option value="7">7手</option>
+                    <option value="8">8手</option>
+                    <option value="9">9手</option>
+                    <option value="10">10手</option>
+                </select>
+            </div>
+            <div>
+                <div class="pretty p-icon p-smooth">
+                    <input type="checkbox" id="p9" name="purcase" value="啤酒-霸(易開罐) $800/箱" data-price="800" />
+                    <div class="state p-success">
+                        <label for="p9">啤酒-霸(易開罐) $800/箱</label>
+            
+                    </div>
+                </div>
+                <select type="radio" id="p9_no" name="purcaseis" value="" data-price="">
+                    <option selected value=0>無</option>
+                    <option value="1">1箱</option>
+                    <option value="2">2箱</option>
+                    <option value="3">3箱</option>
+                    <option value="4">4箱</option>
+                    <option value="5">5箱</option>
+                    <option value="6">6箱</option>
+                    <option value="7">7箱</option>
+                    <option value="8">8箱</option>
+                    <option value="9">9箱</option>
+                    <option value="10">10箱</option>
+                </select>
+            </div>
+
+        </div>
+        
+    </div>
+    
+    <div class="booking-info">
+    <div><label style="font-size: 14px;" for="bbqamount">+方案費用</label><input  type="number" id="bbqamount" class="email" value="0" placeholder="烤肉食材費用" ></div>
+      <div><label style="font-size: 14px;" for="purcaseamount">+加購費用</label><input type="number" id="purcaseamount" class="email" value="0" placeholder="加購費用"></div>
+      <div><label style="font-size: 20px;"  for="bbqamountALL">=總價</label><input type="number" id="bbqamountALL" class="email" value="0" placeholder="填寫烤肉總價"></div>
+      <div><label for="guest">預定大名</label><input type="text" id="guest" class="email" placeholder="訂房大名"></div>
+      <div><label for="bbqdate">烤肉日期時間</label><input type="datetime-local" id="bbqdate" class="email" value="" placeholder=""  ></div>
+      <div><label for="bbqdeadline">付款期限</label><input type="date" id="bbqdeadline" class="email" placeholder="付款期限" ></div>
+      
+      <input hidden type="number" id="meatPrice" class="email" value=""  placeholder="烤肉食材費用" style="display: none;">
+      <input hidden type="number" id="cleanPrice" class="email" value=""  placeholder="清潔費費用"  style="display: none;">
+      
+    
+      
+    </div>
+  
+    <br/>
+    <button type="button" class="register sent">
+      <span>送出</span>
+    </button>
+    <h3>訊息已送出 !</h3>
+    <div class="reg"></div>
+    <div class="sig"></div>
+  </div>
+
+  <div id="room_form" class="form">
+    <input type="hidden" id="lineUserId" class="email" placeholder="LineID">
+    <div class="booking-info">
+      <textarea class="way1" id="letter" placeholder="請直接貼上旅安系統訂房摘要，範例：
+      訂單編號: 103518
+      訂房人 : 余婉霖
+      2020-05-15 至 2020-05-16， 精緻四人房OFF×1 精緻雙人房×1 ( 2間 )"></textarea>
+      <div class="way2"><label for="guest">訂房大名</label><input type="text" id="guest" class="email" placeholder="訂房大名"></div>
+      <div class="way2"><label for="date">入住期間</label><input type="text" id="date" class="email" value="" placeholder="入住期間"  ></div>
+      <div class="way2"><label for="days">天數</label><input type="number" id="days" class="email" value="1"  placeholder="天數" ></div>
+      <div><label for="eat">早餐</label><input type="number" id="eat" class="email" value=""  placeholder="早餐" ></div>
+      <div><label for="amount">填寫訂單總價</label><input type="number" id="amount" class="email" value=""  placeholder="填寫訂單總價" ></div>
+      <div><label for="deposit">填寫訂單訂金</label><input type="number" id="deposit" class="email" value=""  placeholder="填寫訂單訂金" ></div>
+      <div><label for="deadline">訂金期限天數</label><input type="number" id="deadline" class="email" value="2"  placeholder="訂金期限天數" ></div>
+    </div>
+    <div id="priceOption" style="margin:20px 30px;">
+      <div>自定義價格優惠類型（預設為顯示優惠價）</div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="many" name="pricetype" value="多間" />
+        <div class="state p-success">
+          <label >多間</label><br>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="back" name="pricetype" value="洄游" />
+        <div class="state p-success">
+          <label >洄游</label><br>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="overstay" name="pricetype" value="續住" />
+        <div class="state p-success">
+          <label >續住</label><br>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="sole" name="pricetype" value="包棟" />
+        <div class="state p-success">
+          <i class="icon mdi mdi-check"></i>
+          <label>包棟</label>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="net" name="pricetype" value="NET" />
+        <div class="state p-success">
+          <label >同業優惠價（房價有同業優惠價再選）</label><br>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="spec" name="pricetype"  value="特別"/>
+        <div class="state p-success">
+          <label >特別</label>
+        </div>
+      </div>
+    </div>
+    <div id="roomSelectList" style="margin:30px;"></div>
+    <textarea id="requirement" placeholder="訂單備註，如寵物入其中一間，兩位入住，加人一位等等"></textarea>
+    <br/>
+    <div id="advanced" style="margin:30px;">
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="pet" name="pet" />
+        <div class="state p-success">
+          <label for="pet">寵物入住（會附上寵物入住須知）</label>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="cross" name="cross" />
+        <div class="state p-success">
+          <label for="cross">您的房間在不同棟（增加提醒）</label>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="deposited" name="deposited" />
+        <div class="state p-success">
+          <label for="deposited">已付訂金（顯示已付訂金，不會有匯款資訊）</label>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="noprepay" name="noprepay" />
+        <div class="state p-success">
+          <label for="noprepay">免訂金（全額現場付款，不會有匯款資訊）</label>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="modify" name="modify" />
+        <div class="state p-success">
+          <label for="modify">訂單內容修改（會有：已為您修改如下）</label><br>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="travelor" name="travelor" />
+        <div class="state p-success">
+          <i class="icon mdi mdi-check"></i>
+          <label for="travelor">同業旅行社（會有同業須知)</label>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="ota" name="ota" />
+        <div class="state p-success">
+          <i class="icon mdi mdi-check"></i>
+          <label for="ota">OTA訂單</label>
+        </div>
+      </div>
+    </div>
+ 
+    <br/>
+    <button type="button" class="signin sent">
+      <span>送出</span>
+    </button>
+    <h3>訊息已送出 !</h3>
+    <div class="reg"></div>
+    <div class="sig"></div>
+</div>
+ 
+ 
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <!-- Load LIFF SDK -->
+    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
+
+<script>
+  var vConsole = new VConsole();
+var rooms = [
+	{room_id: "3", room_name: "A棟 山景雙人房", sham_name: "山景雙人房"},
+	{room_id: "4", room_name: "A棟 山景湯屋房", sham_name: "山景湯屋房"},
+	{room_id: "5", room_name: "A棟 海景雙人房", sham_name: "海景雙人房(2小床)"},
+	{room_id: "7", room_name: "A棟 山景四人房", sham_name: "山景四人房"},
+	{room_id: "9", room_name: "A棟 海景四人房", sham_name: "海景四人房"},	
+	{room_id: "10", room_name: "A棟 山海景家庭四人房", sham_name: "山海景家庭四人房"},
+	{room_id: "11", room_name: "A棟 VIP頂級海景四人房", sham_name: "VIP頂級海景四人房"},
+  {room_id: "14", room_name: "A棟 VIP頂級山海景六人房", sham_name: "VIP頂級山海景六人房"},
+  {room_id: "1", room_name: "B棟 簡約雙人房", sham_name: "簡約雙人房(2小床)"},
+	{room_id: "2", room_name: "B棟 精緻雙人房", sham_name: "精緻雙人房"},
+  {room_id: "6", room_name: "B棟 精緻四人房", sham_name: "精緻四人房OFF"},
+  {room_id: "6", room_name: "B棟 精緻四人房", sham_name: "精緻四人房(窗)"},
+  {room_id: "12", room_name: "B棟 精緻家庭六人房", sham_name: "精緻家庭六人房"},
+	{room_id: "13", room_name: "B棟 VIP精緻六人房", sham_name: "VIP精緻六人房"}
+]
+
+
+$(document).ready(function () {
+	  liff.init(function (data) {
+        liff.getProfile().then(function (profile) {
+            $('#empolyee').val(profile.displayName);
+            $('#lineUserId').val(profile.userId);
+            // alert(JSON.stringify(profile));
+        });
+    });
+    var hasCP = false
+    var hasMP = false
+
+    $('#amount').change(function (event) {
+      var val = event.target.value
+      $('#deposit').val(parseInt(val*0.3))
+    })
+
+    $('#letter_sup').change(function(event){
+      var val = event.target.value
+      console.log(val)
+      supTextCatch()
+    })
+
+    $('.bbq_version_item').click(function (event) {
+      var t = event.target
+      var w = $(t).hasClass('bbq_version_old')
+      $('#bbqamount').val('')
+      $('.for_nb3').hide()
+      $('.for_nb2').hide()
+      $('.for_bbq_version_old input, .for_bbq_version_new input').prop('checked', false)
+      if (w) {
+        $('.bbq_version_item').removeClass('active');
+        $('.bbq_version_old.bbq_version_item').addClass('active');
+        $('.for_bbq_version_old').show()
+        $('.for_bbq_version_new').hide()
+      } else {
+        $('.bbq_version_item').removeClass('active');
+        $('.bbq_version_new.bbq_version_item').addClass('active');
+        $('.for_bbq_version_new').show()
+        $('.for_bbq_version_old').hide()
+      }
+    })
+
+    $('.book_type').click(function (event) {
+        var t = event.target
+        var w = $(t).hasClass('room_book')
+        var s = $(t).hasClass('sup_book')
+        if (w) {
+            $('.book_type').removeClass('active');
+            $('.room_book.book_type').addClass('active');
+            $('#room_form').show()
+            $('#bbq_form').hide()
+            $('#sup_form').hide()
+          } else if (s) {
+            $('.book_type').removeClass('active');
+            $('.sup_book.book_type').addClass('active');
+            $('#sup_form').show()
+            $('#room_form').hide()
+            $('#bbq_form').hide()
+          } else {
+            $('.book_type').removeClass('active');
+            $('.bbq_book.book_type').addClass('active');
+            $('#bbq_form').show()
+            $('#room_form').hide()
+            $('#sup_form').hide()
+            
+            $('.bbq_version_item').removeClass('active');
+            $('.bbq_version_new.bbq_version_item').addClass('active');
+            $('.for_bbq_version_new').show()
+            $('.for_bbq_version_old').hide()
+        }
+    })
+
+    $('input[name="bbq"]').change(function (event) {
+      var v = $(event.target).val()
+      console.log(v)
+      if (v == '方案二 總價$6000'|| v == '方案一 總價$1000' || v == '方案一 總價$1500'  ) {
+        $('#cleanPerson').hide()
+        $('#meatPerson').hide()
+      } else if (v == '方案一' ) {
+        $('#meatPerson').hide()
+        $('#cleanPerson').show()
+      } else {
+        $('#cleanPerson').show()
+        $('#meatPerson').show()
+      }
+      calAmount()
+    })
+
+    $('input[name="newbbq"]').change(function (event) {
+        var v = $(event.target).attr('data-code')
+        console.log('>>>', v)
+        if (v == 'nb11' || v =='nb2' || v == 'nb3') {
+            $('#cleanPerson').hide()
+            $('#meatPerson').hide()
+        } else if (v == 'nb12') {
+            $('#meatPerson').hide()
+            $('#cleanPerson').show()
+        } else {
+            $('#cleanPerson').hide()
+            $('#meatPerson').show()
+        }
+
+        if (v == 'nb2') {
+            $('.for_nb2').show()
+            $('.for_nb3').hide()
+        } else if (v == 'nb3') {
+            $('.for_nb3').show()
+            $('.for_nb2').hide()
+        } else {
+            $('.for_nb3').hide()
+            $('.for_nb2').hide()
+        }
+        calAmountNEW()
+    })
+
+    $('input[name="newbbqii"]').change(function (event) {
+        calAmountNEW()
+    })
+    $('select[name="newbbqis"]').change(function (event) {
+        calAmountNEW()
+    })
+
+    $('input[name="purcase"]').change(function (event) {
+        calAmountPURCASE()
+    })
+    $('select[name="purcaseis"]').change(function (event) {
+        calAmountPURCASE()
+    })
+
+    
+
+    $('input#meatPerson, input#cleanPerson').change(function(event) {
+        var old = $('.bbq_version_item.active').hasClass('bbq_version_old')
+        if (old) {
+            calAmount()
+        } else {
+            calAmountNEW()
+        }
+    })
+
+    $('.room_book.book_type').addClass('active');
+    $('#bbq_form').hide()
+    $('.way2').hide();
+    $('.way1').show();
+    $('#sup_form').hide()
+    var way = 1
+    
+    if(way == 2) {
+      var roomTmp = ''
+      rooms.forEach(r => {
+        roomTmp += '<div class="pretty p-default">'+
+          '<input type="checkbox" id="' + r.room_id + '" name="' + r.room_id + '" value="'+ r.room_name +'" />'+
+          '<div class="state p-primary">'+
+            '<i class="icon mdi mdi-check"></i>'+
+              '<label for="'+ r.room_id +'">'+r.room_name+'</label>'+
+          '</div>'+
+          '</div>'
+      })
+      $('#roomSelectList').html(roomTmp)
+    }
+    
+    var reg2_btn = $('.container .register2');
+    var reg_btn = $('.container .register');
+    var sig_btn = $('.container .signin');
+    /*------- back button ----------------------*/
+    var back_btn = $('.container .back');
+    reg_btn.click(function (e) {
+        e.preventDefault();
+        $(this).siblings('.reg').css({
+            'transform': 'translateY(40%) scale(5)',
+            'border-radius': '0',
+            'width': '100%',
+            'height': '100%'
+        }).end();
+        reg_btn.siblings('.container h3:nth-of-type(1)').css({
+            'top': '40%',
+            'z-index': '8'
+        }).end().end();
+    });
+    sig_btn.on('click', function (e) {
+        e.preventDefault();
+        var obj = $(this)
+		    sendMail(obj, 'room');
+    });
+    reg_btn.on('click', function (e) {
+        e.preventDefault();
+        var obj = $(this)
+		    sendMail(obj, 'bbq');
+    });
+    reg2_btn.on('click', function (e) {
+        e.preventDefault();
+        var obj = $(this)
+		    sendMail(obj, 'sup');
+    });
+
+  function supTextCatch(text) {
+    var letter = $('#letter_sup').val()
+      console.log('letter_sup', letter)
+      var lines = letter.split('\n')
+      console.log(lines)
+      var schedule = lines[1].split('行程：')[1]
+      var guest_num = lines[2].split('人數：')[1]
+      var main_guest = (lines[3].split(', 郵件')[0]).split('我是主聯絡人：')[1]
+      console.log(schedule)
+      var basePrice = 0
+      if (schedule.indexOf('都蘭東海岸巡航') > -1) {
+        basePrice = 2400
+      } else if (schedule.indexOf('馬武窟溪小冰島') > -1) {
+        basePrice = 1700
+      } else if (schedule.indexOf('三仙台太平洋') > -1) {
+        basePrice = 2400
+      }
+      console.log(basePrice)
+      var amount = basePrice * guest_num
+      console.log(schedule, guest_num, main_guest)
+
+      $('#sup_form #mainGuest').val(main_guest)
+      $('#sup_form #sup_amount').val(amount)
+      $('#sup_form #schedule').val(schedule)
+      $('#sup_form #schedule_base_price').val(basePrice)
+      $('#sup_form #schedule_num').val(guest_num)
+  }
+
+    function calAmount () {
+    console.log('calAmount')
+    var amt = 0
+    var package = $('#bbq_form input[name="bbq"]:checked').val()
+    var packagePrice = $('#bbq_form input[name="bbq"]:checked').data('price')
+    console.log(package, packagePrice)
+    
+    if (package == '方案一' ) {
+        hasCP = true
+        hasMP = false
+    } else if (package == '方案二 總價$6000' || package == '方案一 總價$1000' || package == '方案一 總價$1500'  ) {
+        hasMP = false
+        hasCP = false
+        if (package == '方案二 總價$6000') {
+          amt = 6000
+          $('#meatPrice').val(6000)
+        }
+        if (package == '方案一 總價$1000') {
+          amt = 1000
+          $('#cleanPrice').val(1000)
+        }
+        if (package == '方案一 總價$1500') {
+          amt = 1500
+          $('#cleanPrice').val(1500)
+        }
+    } else {
+        hasMP = true
+        hasCP = true
+    }
+
+    if (hasCP) {
+      var cleanPrice = (150 * $('#cleanPerson').val())
+      $('#cleanPrice').val(cleanPrice)
+      amt += cleanPrice
+    }
+    if (hasMP) {
+      var meatPrice =  $('#meatPerson').val() * packagePrice
+      $('#meatPrice').val(meatPrice)
+      amt +=meatPrice
+    }
+    $('#bbqamount').val(amt)
+    $('#bbqamountALL').val(parseInt(amt))
+  }
+	
+
+    function calAmountNEW() {
+        console.log('calAmountNEW')
+        var amt = 0
+        var package = $('#bbq_form input[name="newbbq"]:checked').val()
+        var packageCode = $('#bbq_form input[name="newbbq"]:checked').data('code')
+        var packagePrice = $('#bbq_form input[name="newbbq"]:checked').data('price')
+        console.log(package, packageCode, packagePrice)
+
+        if (packageCode == 'nb12') {
+            hasCP = true
+            hasMP = false
+        } else if (packageCode == 'nb11' || packageCode == 'nb2' || packageCode == 'nb3') {
+            hasMP = false
+            hasCP = false
+            if (packageCode == 'nb11') {
+                amt = 1500
+                $('#cleanPrice').val(1500)
+            } else if (packageCode == 'nb2') {
+                var nb2x = $('.for_nb2 > div')
+                console.log(nb2x)
+                var amount = 0
+                for(var i=0; i<nb2x.length; i++) {
+                    var price = $(nb2x[i]).find('input[name="newbbqii"]').data('price')
+                    var select = $(nb2x[i]).find('input[name="newbbqii"]').prop('checked') ? 1 : 0
+                    var count = $(nb2x[i]).find('select[name="newbbqis"]').val()
+                    console.log(select, price, count)
+                    amount += select * price * parseFloat(count)
+                }
+                console.log(amount)
+                amt = amount
+                packagePrice = amt
+                $('#meatPrice').val(amount)
+            } else if (packageCode == 'nb3') {
+                var nb2x = $('.for_nb3 input[name="newbbqii"]:checked')
+                console.log(nb2x)
+                var amount = nb2x.data('price')
+                console.log(amount)
+                amt = amount
+                packagePrice = amt
+                $('#meatPrice').val(amount)
+            }
+        } else {
+            hasMP = true
+            hasCP = false
+        }
+
+        if (hasCP) {
+            console.log($('#cleanPerson').val())
+            var cleanPrice = (200 * $('#cleanPerson').val())
+            $('#cleanPrice').val(cleanPrice)
+            amt += cleanPrice
+        }
+        if (hasMP) {
+            var meatPrice = $('#meatPerson').val() * packagePrice
+            $('#meatPrice').val(meatPrice)
+            amt += meatPrice
+        }
+        $('#bbqamount').val(amt)
+        $('#bbqamountALL').val(parseInt(amt) + parseInt($('#purcaseamount').val()))
+    }
+
+    function calAmountPURCASE() {
+        console.log('calAmountPURCASE')
+        var amt = 0
+        // var package = $('#bbq_form input[name="newbbq"]:checked').val()
+        // var packageCode = $('#bbq_form input[name="newbbq"]:checked').data('code')
+        // var packagePrice = $('#bbq_form input[name="newbbq"]:checked').data('price')
+        //console.log(package, packageCode, packagePrice)
+
+        
+        var nb2x = $('#bbq_form input[name="purcase"]:checked')
+        console.log(nb2x)
+        var amount = 0
+        for (var i = 0; i < nb2x.length; i++) {
+            var price = $(nb2x[i]).data('price')
+            var count = $(nb2x[i]).parent().next().find('option:selected').val()
+            console.log(price, count)
+            amount += price * parseFloat(count)
+        }
+        console.log(amount)
+        amt = amount
+        
+
+        
+        $('#purcaseamount').val(amt)
+        $('#bbqamountALL').val(parseInt(amt) + parseInt($('#bbqamount').val()))
+    }
+    
+
+	function sendMail(obj, messagetype) {
+  $('.signin').attr('disabled', true)
+
+  var pushMessgae2 = ''
+  var helloword = ' 先生/小姐您好，台東富杉晴民宿 Rich-Sunshine Inn 感謝您的預訂'
+  var concat = '👉🏻有問題都可以使用官方lLINE詢問 line://ti/p/@bmj3918o \n'
+  var bbqknow = '👉🏻烤肉活動方案注意事項請見：https://rich-sunshine.tw/news/BBQ \n'
+  var travelorknow = '👉🏻同業旅行社預訂須知：h https://rich-sunshine.tw/other/promotNet202101.html \n'
+  var bank = '🔸匯款資訊🔸 \n'+
+      '國泰世華銀行 013 \n'+
+      '分行名稱：台東分行 \n'+
+      '戶名：黃建彰 \n'+
+      '銀行帳號：102-50-617130-7 \n'
+  
+  if (messagetype == 'sup') {
+    supTextCatch()
+    var guest = $('#sup_form #mainGuest').val()
+    var amount = $('#sup_form #sup_amount').val()
+    var schedule = $('#sup_form #schedule').val()
+    var num = $('#sup_form #schedule_num').val()
+
+    var pushMessgae = guest + helloword;
+    pushMessgae+= '\n\nSUP行程：'+ schedule +' × ' + num + '人（一人一板）\n\n';
+    pushMessgae += '•  SUP行程全款項【$'+ amount +'】敬請於【3日內】預先支付全額費用，並回覆我們做確認。\n\n' + bank
+
+    pushMessgae += '\n\n匯款前請先確認EMAIL有收到『SUP DAILY 行程預約信(憑證)』\n\n' + 
+    '若需更改行程或取消行程，可與民宿聯繫，或直接聯繫SUP DAILY教練哦！\n'+
+    '退費規則： 活動前7天以上全額退費，1~7天扣10%，活動當天不退費喔。 \n\n'+
+    'SUP DAILY 官方帳號👉🏻 https://line.me/R/ti/p/%40supdaily';
+  } else if (messagetype == 'room') {
+    // var guest =  $('#guest').val()
+    var date =  $('#date').val()
+    var days =  $('#days').val()
+    var eat =  $('#eat').val()
+    var amount =  $('#amount').val()
+    var deposit =  $('#deposit').val()
+    var deadline =  $('#deadline').val()
+    var requirement =  $('.container #requirement').val()
+
+    var pet =  $('#pet').prop('checked')
+    var deposited =  $('#deposited').prop('checked')
+    var cross =  $('#cross').prop('checked')
+    var modify =  $('#modify').prop('checked')
+    var travelor =  $('#travelor').prop('checked')
+    var noprepay =  $('#noprepay').prop('checked')
+    var ota = $('#ota').prop('checked')
+    var selRooms = $('#roomSelectList input:checked')
+
+    var selRoomsTmp = ''
+    if(way == 1) {
+      var letter = $('#letter').val()
+      console.log('letter', letter)
+      var lines = letter.split('\n')
+      console.log(lines)
+      var saleID = lines[0].split('訂單編號: ')[0]
+      var guest = lines[1].split('訂房人 : ')[1]
+      date = lines[2].split('， ')[0]
+      console.log(lines[2].split('， ')[1])
+      var rms = (lines[2].split('， ')[1])
+      selRoomsTmp = rms.replace(/×(\d+) /g, ' $1間\n')
+      console.log(selRoomsTmp)
+      // date = str2[0]
+      var datea = date.split('至')[0].trim()
+      var dateb = date.split('至')[1].trim()
+      days = moment.duration(moment(dateb).diff(moment(datea), 'days'))
+      console.log(datea, dateb, days, selRoomsTmp)
+      
+      // for (var i=0; i<str3[0].length; i++) {
+      //   selRoomsTmp += str3[0][i]
+      //   if (str3[0][i] == '間') {
+      //     selRoomsTmp += '\n'
+      //   }
+      // }
+    } else {
+      console.log(selRooms)
+      for(var i=0; i<selRooms.length; i++) {
+        console.log(selRooms[i])
+        selRoomsTmp += $(selRooms[i]).val() + ' 1間 \n'
+      }
+      console.log(selRoomsTmp)
+    }
+
+    var priceTmp = ''
+    var pricetype = $('#priceOption input:checked')
+    for(var i=0;i<pricetype.length;i++){
+      priceTmp += $(pricetype[i]).val()
+    }
+    console.log(pricetype)
+
+    var stayknow = '👉 預定入住須知請見：https://rich-sunshine.tw/know \n'
+    var cancelknow = '👉🏻取消訂房規定請見：https://rich-sunshine.tw/regulation \n'
+    var petknow = '👉🏻寵物入住規定請見：https://rich-sunshine.tw/news/PET \n'
+    var preknow = '‼️預訂即表示同意以下民宿規定與入住須知，煩請撥空了解：\n\n' + stayknow + '\n' + cancelknow + '\n'
+    if (pet) {
+      requirement += '\n寵物入住'
+      preknow += petknow + '\n'
+    }
+    if (travelor) {
+      preknow += travelorknow + '\n'
+      deadline = 7
+    }
+
+    
+    var pushMessgae = guest + helloword;
+
+    if (modify) {
+      pushMessgae += '，已為您修改如下：'
+    }
+    pushMessgae += '\n\n'
+    if (ota) {
+      pushMessgae += '平台：OTA線上訂房平台\n'
+    }
+    pushMessgae += '入住/退房日期：'+ days +'晚 \n' +
+                    date + '\n' + 
+                    '早餐：'+ eat + '客/天\n'+
+                    '房型： \n'+
+                      selRoomsTmp;
+    if (requirement !== '') {
+      pushMessgae += '\n備註：' + requirement;
+    }
+        pushMessgae += '\n \n'+         
+        priceTmp + (ota ? 'OTA價 ' : '優惠價 ') + amount + '元 \n';
+
+    if (deposited) {
+      pushMessgae += '已預付訂金 '+deposit+'元，餘款於現場辦理入住時付清即可。'
+    } else if (noprepay) {
+      pushMessgae += '免預付訂金，全款於現場辦理入住時付清即可。'
+    } else {
+      pushMessgae += '預付訂金 ' + deposit + '元，麻煩您於【'+deadline+'日內】完成轉帳，並回傳帳號後五碼予我們確認後，才算完成預訂唷！ 餘款於現場辦理入住時付清即可。  \n\n' + bank
+
+    }   
+    pushMessgae += '\n\n'
+    if (cross) {
+      pushMessgae += '⚠️您的房間在不同棟  \n\n'
+    }
+    pushMessgae += preknow + concat       
+    console.log(pushMessgae)
+  } else {
+    // BBQ
+    var guest =  $('#guest').val()
+    var bbqamount =  $('#bbqamount').val()
+    var bbqamountALL = $('#bbqamountALL').val()
+    var purcaseamount = $('#purcaseamount').val()
+    var bbqdate =  $('#bbqdate').val()
+    var bbqdeadline =  $('#bbqdeadline').val()
+    var version = $('.bbq_version_old').hasClass('active') ? 'old' : 'new'
+    var package = version == 'old' ? $('#bbq_form input[name="bbq"]:checked').val() : $('#bbq_form input[name="newbbq"]:checked').val()
+    var packageCode = version == 'old' ? '' : $('#bbq_form input[name="newbbq"]:checked').data('code')
+    console.log(package, packageCode)
+
+    var newMenu = ''
+    var newMenuList = version == 'old' ? [] : $('.for_'+ packageCode+' input[name="newbbqii"]:checked')
+    console.log(newMenuList)
+
+    if (packageCode == 'nb2') {
+        newMenu += ' \n菜單：\n'
+        for (var i = 0; i < newMenuList.length; i++) {
+            var count = $(newMenuList[i]).parent().next().find('option:selected').text()
+            if (count !== '無') {
+                newMenu += $(newMenuList[i]).val() + ' ' + count + ' \n'
+            }
+        }
+    } else if (packageCode == 'nb3') {
+        newMenu += ' \n菜單：'
+        for(var i=0; i< newMenuList.length; i++) {
+            newMenu += $(newMenuList[i]).val() + ' \n'
+        }
+    }
+    pushMessgae2 = moment(bbqdate).format('MM/DD HH:mm') +' \n' + newMenu + '\n\n客訂如上，感謝小凱哥'
+    var newPurcaseList = version == 'old' ? [] : $('input[name="purcase"]:checked')
+    var newPurcase = ''
+    if (purcaseamount!==0 && purcaseamount.length > 0) {
+        newMenu += ' \n加購項目：\n'
+        for (var i = 0; i < newPurcaseList.length; i++) {
+            var count = $(newPurcaseList[i]).parent().next().find('option:selected').text()
+            if (count !== '無') {
+                newMenu += $(newPurcaseList[i]).val() + ' ' + count + ' \n'
+            }
+        }
+    }
+
+    var totalAmount = version == 'old' ? bbqamount : bbqamountALL
+
+    pushMessgae = guest + helloword
+    pushMessgae+= '\n\n烤肉日期：'+ moment(bbqdate).format('YYYY/MM/DD HH:mm') +' \n' +
+    '烤肉：' + package + newMenu +
+    '\n價格：\n';
+    if (packageCode == 'nb12') {
+       pushMessgae += '•  ' + $('#cleanPerson').val() + '人清潔費 ' + $('#cleanPrice').val() + '元\n';
+    } else if (packageCode == 'nb11') {
+        pushMessgae += '•  ' + '清潔費總額 ' + $('#cleanPrice').val() + '元\n';
+    } else if (packageCode == 'nb2' || packageCode == 'nb3') {
+        pushMessgae += '•  ' + '烤肉菜單總額 ' + $('#meatPrice').val() + '元\n';
+    } else if (package == '方案二 總價$6000') {
+      pushMessgae += '•  ' + '烤肉總額 '+ $('#meatPrice').val() +'元\n';
+    } else if (package!== '方案一' && package!== '方案一 總價$1000' && package!== '方案一 總價$1500') {
+      pushMessgae += '•  ' + $('#meatPerson').val() + '人份烤肉總價 '+ $('#meatPrice').val() +'元\n';
+    } else {
+      if (package == '方案一') {
+        pushMessgae += '•  ' + $('#cleanPerson').val() + '人清潔費 '+ $('#cleanPrice').val() +'元\n';
+      } else {
+        pushMessgae += '•  ' + '清潔費總額 '+ $('#cleanPrice').val() +'元\n';
+      }
+    }
+    if (hasCP && package!== '方案一' && packageCode !== 'nb12' && $('#cleanPerson').val() !== '') {    
+      pushMessgae += '•  其餘以人頭$150/位計: '+ $('#cleanPerson').val() +'位\n'
+    }
+    if (purcaseamount !== 0 && purcaseamount.length > 0) {
+        pushMessgae += '•  ' + '加購項目總額 ' + purcaseamount + '元\n';
+    }
+    if (package.indexOf('方案一') > -1) {
+    pushMessgae += '•  烤肉活動全款項【$'+ totalAmount +'】於現場辦理入住時一併支付全額費用即可。\n\n' + bbqknow
+    } else {
+    pushMessgae += '•  烤肉活動全款項【$'+ totalAmount +'】敬請於【'+moment(bbqdeadline).format('YYYY/MM/DD')+'前】預先支付全額費用，並回覆我們做確認。\n\n' + bank
+    + '\n\n' + bbqknow
+    }  
+  }
+  console.log(pushMessgae)
+	  
+  obj.siblings('.sig').css({
+          'transform': 'translateY(40%) scale(5)',
+          'border-radius': '0',
+          'width': '100%',
+          'height': '100%'
+      }).end();
+  sig_btn.siblings('.container h3:nth-of-type(2)').css({
+      'top': '40%',
+      'z-index': '8'
+  }).end().end();
+
+  var thisPushMessage = [
+  {
+    type:'text',
+    text:pushMessgae
+  }
+  ]
+  
+  if(messagetype == 'bbq') {
+    thisPushMessage.push({
+    type:'text',
+    text:pushMessgae2
+  })
+    liff.sendMessages(thisPushMessage).then(function () {
+          window.alert("Sent");
+      }).catch(function (error) {
+          window.alert("Error sending message: " + error);
+      });
+  } else {
+    liff.sendMessages(thisPushMessage).then(function () {
+          window.alert("Sent");
+      }).catch(function (error) {
+          window.alert("Error sending message: " + error);
+      });
+  }
+}
+
+  
+ 
+
+    function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+    
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+    
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
+});
+</script>
+
+</body>
+</html>
