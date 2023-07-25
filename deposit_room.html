@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+  <title>訂房確認訊息</title>
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.2.45/css/materialdesignicons.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+<!-- <link rel="stylesheet" href="./style.css"> -->
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #e2e2e2;
+}
+
+svg {
+  position: fixed;
+  top: 10px;
+  left: 0px;
+}
+
+.container {
+  position: relative;
+  top: 60px;
+  display: block;
+  margin: 0 auto 80px auto;
+  width: 90%;
+  max-width: 500px;
+  background: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+h2 {
+  padding: 40px;
+  font-weight: lighter;
+  text-transform: uppercase;
+  color: #414141;
+}
+
+input {
+  display: block;
+  height: 60px;
+  width: 90%;
+  margin: 0 auto;
+  border: none;
+}
+.form input::placeholder {
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+.form input:hover, input:focus, input:active:focus {
+  color: #ff5722;
+  outline: none;
+  border-bottom: 1px solid #ff5722;
+}
+.form label.outer {
+      position: relative;
+      display: block;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: .5px;
+      color: #939393; }
+
+
+.email,
+.pwd {
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 20px;
+  font-family: 'Open Sans', sans-serif;
+  color: #858585;
+  font-weight: lighter;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+#requirement, #letter,  #letter_sup {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    color: #858585;
+    font-weight: lighter;
+    display: block;
+    height: 90px;
+    width: 90%;
+    margin: 0 auto;
+    resize: none;
+}
+#letter {
+  height: 120px;
+}
+#letter_sup {
+  height: 240px;
+}
+
+.link{
+  text-decoration:none;
+  display:block;
+  margin:10px;
+  text-align: center;
+  text-transform:uppercase;
+  color:#ff5722;
+  font-weight:lighter;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+.hint{
+  text-decoration:none;
+  display:block;
+  margin:10px;
+  text-align: left;
+  text-transform:uppercase;
+  color:#858585;
+  font-weight:lighter;
+  -webkit-transition:.5s;
+  transition:.5s;
+  font-size: 12px;
+}
+
+button {
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  width: 100%;
+  height: 60px;
+  margin-top: -10px;
+  border: none;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  -webkit-transition: .5s;
+  transition: .5s;
+  background: #e2e2e2;
+}
+
+button.sent {
+  background: #ff5722;
+}
+button span {
+  position: absolute;
+  display: block;
+  margin: -10px 20%;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+button:hover span {
+  -webkit-transform: translateX(30px);
+  transform: translateX(30px);
+}
+
+.reg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: translateY(-100%) scale(1);
+  transform: translateY(-100%) scale(1);
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  background: #673ab7;
+  z-index: 5;
+  -webkit-transition: .8s ease-in-out;
+  transition: .8s ease-in-out;
+}
+
+.sig {
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transform: translateY(-100%) scale(1);
+  transform: translateY(-100%) scale(1);
+  display: block;
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: #ff5722;
+  z-index: 5;
+  -webkit-transition: .8s ease-in-out;
+  transition: .8s ease-in-out;
+}
+
+h3 {
+  position: absolute;
+  top: -100%;
+  left: 20%;
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: rgba(255, 255, 255, 0.3);
+  -webkit-transition: .3s ease-in-out 1.2s;
+  transition: .3s ease-in-out 1.2s;
+}
+
+.booking-info, .whole-type, .booking-type {
+  margin: 30px;
+}
+.booking-info > div {
+  display: flex;
+}
+.booking-info div label {
+  flex-basis: 80px;
+  /* font-size: 12px;; */
+  align-items: center;
+  display: flex;
+}
+.booking-info div input {
+  flex: 1;
+}
+.book_type {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    background: darkseagreen;
+    color: #fff;
+    opacity: .5;
+}
+.book_type.active {
+  opacity: 1;
+}
+.bbq_version_item {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    background: olive;
+    color: #fff;
+    opacity: .5;
+    font-size: 14px;
+}
+.bbq_version_item.active {
+  opacity: 1;
+}
+
+.for_bbq_version_new > div {
+    width: 100%;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div style="display:flex;">
+    <div class="room_book book_type">
+      <span>訂房</span>
+    </div>
+  </div>
+
+  <div id="room_form" class="form">
+    <input type="hidden" id="lineUserId" class="email" placeholder="LineID">
+    
+    <textarea class="way1" id="letter" placeholder="請直接貼上旅安系統訂房摘要"></textarea>
+    
+    <div class="booking-type">
+        <div>●入住方案</div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="bookingtype_normal" name="bookingtype" value="normal"  />
+            <div class="state p-success">
+                <label>一般入住訂房</label><br>
+            </div>
+        </div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="bookingtype_pet" name="bookingtype" value="pet" checked />
+            <div class="state p-success">
+                <label>寵物入住訂房</label><br>
+            </div>
+        </div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="bookingtype_whole" name="bookingtype" value="whole" />
+            <div class="state p-success">
+                <label>包棟入住訂房</label><br>
+            </div>
+        </div>
+    </div>
+
+    <div class="whole-type" style="display:none;">
+        <div>●包棟內容</div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="wholetype_a" name="wholetype" value="wholeA"  />
+            <div class="state p-success">
+                <label>包A棟</label><br>
+            </div>
+        </div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="wholetype_b" name="wholetype" value="wholeB" />
+            <div class="state p-success">
+                <label>包B棟</label><br>
+            </div>
+        </div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="wholetype_all" name="wholetype" value="wholeAll" />
+            <div class="state p-success">
+                <label>全包棟</label><br>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="booking-info">
+      <div class="way2"><label for="guest">訂房大名</label><input type="text" id="guest" class="email" placeholder="訂房大名"></div>
+      <div class="way2"><label for="date">入住期間</label><input type="text" id="date" class="email" value="" placeholder="入住期間"  ></div>
+      <div class="way2"><label for="days">天數</label><input type="number" id="days" class="email" value="1"  placeholder="天數" ></div>
+      <div><label for="eat">早餐客數</label><input type="number" id="eat" class="email" value=""  placeholder="早餐" ></div>
+      <div><label for="amount">訂單總價</label><input type="number" id="amount" class="email" value=""  placeholder="填寫訂單總價" ></div>
+      <div><label for="deposit">訂單訂金</label><input type="number" id="deposit" class="email" value=""  placeholder="填寫訂單訂金" ></div>
+    </div>
+
+
+    <div id="deadlineOption" style="margin:20px 30px;">
+        <div>●訂金期限</div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="deadline_normal" name="deadline" value="2天內" />
+            <div class="state p-success">
+                <label>2天內(一般)</label><br>
+            </div>
+        </div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="deadline_long" name="deadline" value="7天內" />
+            <div class="state p-success">
+                <label>7天內(包棟、同業預定)</label><br>
+            </div>
+        </div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="deadline_tomorrow" name="deadline" value="明日內(14:00前)" />
+            <div class="state p-success">
+                <label>明日內(14:00前)</label><br>
+            </div>
+        </div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="deadline_today" name="deadline" value="今日內(14:00前)" />
+            <div class="state p-success">
+                <label>今日內(14:00前)</label><br>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="priceOption" style="margin:20px 30px;">
+      <div>●其他優惠類型（一般預設為優惠價）</div>
+      <!-- <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="back" name="pricetype" value="洄游" />
+        <div class="state p-success">
+          <label >洄游</label><br>
+        </div>
+      </div> -->
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="overstay" name="pricetype" value="續住" />
+        <div class="state p-success">
+          <label >續住優惠價</label><br>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="sole" name="pricetype" value="包棟" />
+        <div class="state p-success">
+          <i class="icon mdi mdi-check"></i>
+          <label>包棟優惠價</label>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="net" name="pricetype" value="同業" />
+        <div class="state p-success">
+          <label >同業優惠價（房價有同業優惠價再選）</label><br>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="spec" name="pricetype"  value="特別"/>
+        <div class="state p-success">
+          <label >特別優惠價</label>
+        </div>
+      </div>
+    </div>
+
+    <div id="requirementOption" style="margin:20px 30px 10px;">
+        <div>●備註</div>
+        <div class="pretty p-icon p-smooth">
+            <input type="checkbox" id="requirement_pet" name="requirement" value="寵物入住(一樓精緻房型)" />
+            <div class="state p-success">
+                <label>寵物入住(一樓精緻房型)</label><br>
+            </div>
+        </div>
+        <div class="pretty p-icon p-smooth">
+            <input type="checkbox" id="requirement_babybed" name="requirement" value="嬰兒床組" />
+            <div class="state p-success">
+                <label>嬰兒床組</label><br>
+            </div>
+        </div>
+        <div class="pretty p-icon p-smooth">
+            <input type="checkbox" id="requirement_bed" name="requirement" value="加床一位" />
+            <div class="state p-success">
+                <label>加床一位</label><br>
+            </div>
+        </div>
+        <div class="pretty p-icon p-smooth">
+            <input type="checkbox" id="requirement_child" name="requirement" value="加人一位" />
+            <div class="state p-success">
+                <label>加人一位</label><br>
+            </div>
+        </div>
+    </div>
+    <textarea id="requirement" placeholder="其他訂單備註，如：精緻四人房兩位入住等等"></textarea>
+    <br/>
+    <div id="advanced" style="margin:30px;">
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="pet" name="pet" />
+        <div class="state p-success">
+          <label for="pet">寵物入住（會附上寵物入住須知）</label>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="cross" name="cross" />
+        <div class="state p-success">
+          <label for="cross">您的房間在不同棟（增加提醒）</label>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="deposited" name="deposited" />
+        <div class="state p-success">
+          <label for="deposited">訂單已付訂金（顯示已付訂金，不會有匯款資訊）</label>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="noprepay" name="noprepay" />
+        <div class="state p-success">
+          <label for="noprepay">訂單免訂金（全額現場付款，不會有匯款資訊）</label>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="modify" name="modify" />
+        <div class="state p-success">
+          <label for="modify">訂單內容修改（會有：已為您修改如下）</label><br>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="travelor" name="travelor" />
+        <div class="state p-success">
+          <i class="icon mdi mdi-check"></i>
+          <label for="travelor">同業旅行社（會附上同業訂房須知)</label>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="ota" name="ota" />
+        <div class="state p-success">
+          <i class="icon mdi mdi-check"></i>
+          <label for="ota">OTA訂單</label>
+        </div>
+      </div>
+    </div>
+ 
+    <br/>
+    <button type="button" class="signin sent">
+      <span>送出</span>
+    </button>
+    <h3>訊息已送出 !</h3>
+    <div class="reg"></div>
+    <div class="sig"></div>
+</div>
+ 
+ 
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <!-- Load LIFF SDK -->
+    <!-- <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script> -->
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
+
+<script>
+  var vConsole = new VConsole();
+var rooms = [
+	{room_id: "3", room_name: "A棟 山景雙人房", sham_name: "山景雙人房"},
+	{room_id: "4", room_name: "A棟 山景湯屋房", sham_name: "山景湯屋房"},
+	{room_id: "5", room_name: "A棟 海景雙人房", sham_name: "海景雙人房(2小床)"},
+	{room_id: "7", room_name: "A棟 山景四人房", sham_name: "山景四人房"},
+	{room_id: "9", room_name: "A棟 海景四人房", sham_name: "海景四人房"},	
+	{room_id: "10", room_name: "A棟 山海景家庭四人房", sham_name: "山海景家庭四人房"},
+	{room_id: "11", room_name: "A棟 VIP頂級海景四人房", sham_name: "VIP頂級海景四人房"},
+  {room_id: "14", room_name: "A棟 VIP頂級山海景六人房", sham_name: "VIP頂級山海景六人房"},
+  {room_id: "1", room_name: "B棟 簡約雙人房", sham_name: "簡約雙人房(2小床)"},
+	{room_id: "2", room_name: "B棟 精緻雙人房", sham_name: "精緻雙人房"},
+  {room_id: "6", room_name: "B棟 精緻四人房", sham_name: "精緻四人房OFF"},
+  {room_id: "6", room_name: "B棟 精緻四人房", sham_name: "精緻四人房(窗)"},
+  {room_id: "12", room_name: "B棟 精緻家庭六人房", sham_name: "精緻家庭六人房"},
+	{room_id: "13", room_name: "B棟 VIP精緻六人房", sham_name: "VIP精緻六人房"}
+]
+
+
+$(document).ready(function () {
+    liff
+    .init({
+      liffId: "1635824694-K8Pk50pb", // Use own liffId
+    })
+    .then(() => {
+      // Start to use liff's api
+    })
+    .catch((err) => {
+      // Error happens during initialization
+      console.log(err.code, err.message);
+    });
+
+    var hasCP = false
+    var hasMP = false
+
+    $('.room_book.book_type').addClass('active');
+    $('.way2').hide();
+    $('.way1').show();
+
+    $('#amount').change(function (event) {
+      var val = event.target.value
+      var ori_dep_val = parseInt(val*0.3)
+      $('#deposit').val(parseInt(ori_dep_val/100)*100)
+    })
+
+    $('input[name=bookingtype]').click(function (event) {
+      var val = event.target.value
+      console.log(val)
+    
+      if(val == 'whole') {
+        $('.whole-type').show();
+        $('#sole').prop('checked',true);
+        $('#deadline_long').prop('checked',true);
+        $('#pet').prop('checked',false);
+        $('#requirement_pet').prop('checked',false);
+      } else if (val == 'pet') {
+        $('.whole-type').hide();
+        $('#sole').prop('checked',false);
+        $('#deadline_normal').prop('checked',true);
+        $('#pet').prop('checked',true);
+        $('#requirement_pet').prop('checked',true);
+        $('input[name=wholetype]').prop('checked',false);
+        $('#eat').val('')
+      } else {
+        $('.whole-type').hide();
+        $('#sole').prop('checked',false);
+        $('#deadline_normal').prop('checked',true);
+        $('#pet').prop('checked',false);
+        $('#requirement_pet').prop('checked',false);
+        $('input[name=wholetype]').prop('checked',false);
+        $('#eat').val('')
+      }
+    })
+
+    $('input[name=wholetype]').change(function (event) {
+        var val = event.target.value
+        console.log(val)
+        if(val == 'wholeA') {
+            $('#eat').val(42)
+        } else if (val == 'wholeB') {
+            $('#eat').val(38)
+        } else if (val == 'wholeAll') {
+            $('#eat').val(80)
+        } else {
+            $('#eat').val('')
+        }
+    })
+
+
+    
+
+    
+
+    
+    var reg2_btn = $('.container .register2');
+    var reg_btn = $('.container .register');
+    var sig_btn = $('.container .signin');
+    /*------- back button ----------------------*/
+    var back_btn = $('.container .back');
+    reg_btn.click(function (e) {
+        e.preventDefault();
+        $(this).siblings('.reg').css({
+            'transform': 'translateY(40%) scale(5)',
+            'border-radius': '0',
+            'width': '100%',
+            'height': '100%'
+        }).end();
+        reg_btn.siblings('.container h3:nth-of-type(1)').css({
+            'top': '40%',
+            'z-index': '8'
+        }).end().end();
+    });
+
+    sig_btn.on('click', function (e) {
+        e.preventDefault();
+        var obj = $(this)
+		    sendMail(obj, 'room');
+    });
+
+
+	function sendMail(obj, messagetype) {
+        $('.signin').attr('disabled', true)
+
+        var helloword = ' 先生/小姐您好，台東富杉晴民宿 Rich-Sunshine Inn 感謝您的預訂'
+        var concat = '👉🏻 有問題都可以使用官方LINE詢問 line://ti/p/@bmj3918o \n'
+        
+        var bank = '🔸匯款資訊🔸 \n'+
+        '國泰世華銀行 013 \n'+
+        '分行名稱：台東分行 \n'+
+        '戶名：黃建彰 \n'+
+        '銀行帳號：102-50-617130-7 \n'
+
+
+        var date =  $('#date').val()
+        var days =  $('#days').val()
+        var eat =  $('#eat').val()
+        var amount =  $('#amount').val()
+        var deposit =  $('#deposit').val()
+        var deadline =  $('input[name="deadline"]:checked').val()
+        var self_requirement =  $('.container #requirement').val()
+
+        var wholetype =  $('#bookingtype_whole').prop('checked')
+        var wholetypeA =  $('#wholetype_a').prop('checked')
+        var wholetypeB =  $('#wholetype_b').prop('checked')
+        var wholetypeAll =  $('#wholetype_all').prop('checked')
+
+        var pet =  $('#pet').prop('checked')
+        var deposited =  $('#deposited').prop('checked')
+        var cross =  $('#cross').prop('checked')
+        var modify =  $('#modify').prop('checked')
+        var travelor =  $('#travelor').prop('checked')
+        var noprepay =  $('#noprepay').prop('checked')
+        var ota = $('#ota').prop('checked')
+
+        var selRoomsTmp = ''
+
+        var letter = $('#letter').val()
+        console.log('letter', letter)
+        var lines = letter.split('\n')
+        console.log(lines)
+        var saleID = lines[0].split('訂單編號: ')[0]
+        var guest = lines[1].split('訂房人 : ')[1]
+        date = lines[2].split('， ')[0]
+        console.log(lines[2].split('， ')[1])
+        var rms = (lines[2].split('， ')[1])
+        selRoomsTmp = rms.replace(/×(\d+) /g, ' $1間\n')
+        console.log(selRoomsTmp)
+        // date = str2[0]
+        var datea = date.split('至')[0].trim()
+        var dateb = date.split('至')[1].trim()
+        days = moment.duration(moment(dateb).diff(moment(datea), 'days'))
+        console.log(datea, dateb, days, selRoomsTmp)
+      
+      // for (var i=0; i<str3[0].length; i++) {
+      //   selRoomsTmp += str3[0][i]
+      //   if (str3[0][i] == '間') {
+      //     selRoomsTmp += '\n'
+      //   }
+      // }
+
+
+        var priceTmp = ''
+        var pricetype = $('#priceOption input:checked')
+        for(var i=0;i<pricetype.length;i++){
+            priceTmp += $(pricetype[i]).val()
+        }
+        console.log(pricetype)
+
+        var requireTmp = []
+        var requiretype = $('#requirementOption input:checked')
+        for(var i=0;i<requiretype.length;i++){
+            requireTmp.push($(requiretype[i]).val())
+        }
+        if (self_requirement !== '') {
+            requireTmp.push(self_requirement)
+        }
+        let requirement = requireTmp.concat(',')
+        console.log(requirement)
+
+        var stayknow = '👉🏻 預定入住須知請見：https://rich-sunshine.tw/know \n'
+        var cancelknow = '👉🏻 取消訂房規定請見：https://rich-sunshine.tw/regulation \n'
+        var petknow = '👉🏻 寵物入住規定請見：https://rich-sunshine.tw/news/PET \n'
+        var soleknow = '👉🏻 包棟入住規定請見：https://rich-sunshine.tw/news/SOLE \n'
+        var travelorknow = '👉🏻 同業旅行社預訂須知： https://rich-sunshine.tw/other/promotNet202101.html \n'
+        var preknow = '‼️預訂即表示同意以下民宿規定與入住須知，煩請撥空了解：\n\n' + stayknow + '\n' + cancelknow + '\n'
+
+        var pushMessgae = guest + helloword;
+
+        if (pet) {
+            preknow += petknow + '\n'
+        }
+
+        if (travelor) {
+            preknow += travelorknow + '\n'
+        }
+
+        if (wholetype) {
+            preknow += soleknow + '\n'
+        }
+
+        eat = eat + '客/天';
+
+        if(wholetypeA) {
+            eat = '含早餐(最多42客/天)'
+            selRoomsTmp = '包A棟(12間):\n' + selRoomsTmp
+        }
+        if(wholetypeB) {
+            eat = '含早餐(最多38客/天)'
+            selRoomsTmp = '包B棟(10間):\n' + selRoomsTmp
+        }
+        if(wholetypeAll) {
+            eat = '含早餐(最多80客/天)'
+            selRoomsTmp = '全包棟(22間):\n' + selRoomsTmp
+        }
+
+
+
+        if (modify) {
+            pushMessgae += '，已為您修改如下：'
+        }
+
+        pushMessgae += '\n\n'
+
+        if (ota) {
+            pushMessgae += '平台：OTA線上訂房平台\n'
+        }
+
+        pushMessgae += '入住/退房日期：'+ days +'晚 \n' +
+                    date + '\n' + 
+                    '早餐：'+ eat + '\n'+
+                    '房型： \n'+
+                      selRoomsTmp;
+    if (requirement !== '') {
+      pushMessgae += '\n備註：' + requirement;
+    }
+    pushMessgae += '\n \n'+         
+    priceTmp + (ota ? 'OTA價 ' : '優惠價 ') + amount + '元 \n';
+
+    if (deposited) {
+      pushMessgae += '已預付訂金 '+deposit+'元，餘款於現場辦理入住時付清即可。'
+    } else if (noprepay) {
+      pushMessgae += '免預付訂金，全款於現場辦理入住時付清即可。'
+    } else {
+      pushMessgae += '預付訂金 ' + deposit + '元，麻煩您於【'+deadline+'】完成轉帳，並回傳帳號後五碼予我們確認後，才算完成預訂唷！ 餘款於現場辦理入住時付清即可。  \n\n' + bank
+
+    }   
+    pushMessgae += '\n\n'
+    if (cross) {
+      pushMessgae += '⚠️您的房間在不同棟  \n\n'
+    }
+    pushMessgae += preknow + concat       
+    console.log(pushMessgae)
+   
+  console.log(pushMessgae)
+	  
+  obj.siblings('.sig').css({
+          'transform': 'translateY(40%) scale(5)',
+          'border-radius': '0',
+          'width': '100%',
+          'height': '100%'
+      }).end();
+  sig_btn.siblings('.container h3:nth-of-type(2)').css({
+      'top': '40%',
+      'z-index': '8'
+  }).end().end();
+
+  var thisPushMessage = [
+    {
+      type:'text',
+      text:pushMessgae
+    }
+  ]
+  
+
+    liff.sendMessages(thisPushMessage).then(function () {
+          window.alert("Sent");
+      }).catch(function (error) {
+          window.alert("Error sending message: " + error);
+      });
+  
+}
+
+  
+ 
+
+    function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+    
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+    
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
+});
+</script>
+
+</body>
+</html>
