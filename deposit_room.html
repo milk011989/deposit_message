@@ -485,22 +485,7 @@ h3 {
 
 <script>
   var vConsole = new VConsole();
-var rooms = [
-	{room_id: "3", room_name: "A棟 山景雙人房", sham_name: "山景雙人房"},
-	{room_id: "4", room_name: "A棟 山景湯屋房", sham_name: "山景湯屋房"},
-	{room_id: "5", room_name: "A棟 海景雙人房", sham_name: "海景雙人房(2小床)"},
-	{room_id: "7", room_name: "A棟 山景四人房", sham_name: "山景四人房"},
-	{room_id: "9", room_name: "A棟 海景四人房", sham_name: "海景四人房"},	
-	{room_id: "10", room_name: "A棟 山海景家庭四人房", sham_name: "山海景家庭四人房"},
-	{room_id: "11", room_name: "A棟 VIP頂級海景四人房", sham_name: "VIP頂級海景四人房"},
-  {room_id: "14", room_name: "A棟 VIP頂級山海景六人房", sham_name: "VIP頂級山海景六人房"},
-  {room_id: "1", room_name: "B棟 簡約雙人房", sham_name: "簡約雙人房(2小床)"},
-	{room_id: "2", room_name: "B棟 精緻雙人房", sham_name: "精緻雙人房"},
-  {room_id: "6", room_name: "B棟 精緻四人房", sham_name: "精緻四人房OFF"},
-  {room_id: "6", room_name: "B棟 精緻四人房", sham_name: "精緻四人房(窗)"},
-  {room_id: "12", room_name: "B棟 精緻家庭六人房", sham_name: "精緻家庭六人房"},
-	{room_id: "13", room_name: "B棟 VIP精緻六人房", sham_name: "VIP精緻六人房"}
-]
+
 
 
 $(document).ready(function () {
@@ -641,6 +626,11 @@ $(document).ready(function () {
         var selRoomsTmp = ''
 
         var letter = $('#letter').val()
+        if(letter.trim().length=='')  {
+          $('.signin').attr('disabled', false)
+          alert('請貼上訂單摘要內容！！');
+          return;
+        }
         console.log('letter', letter)
         var lines = letter.split('\n')
         console.log(lines)
@@ -649,28 +639,42 @@ $(document).ready(function () {
         date = lines[2].split('， ')[0]
         console.log(lines[2].split('， ')[1])
         var rms = (lines[2].split('， ')[1])
-        selRoomsTmp = rms.replace(/×(\d+) /g, ' $1間\n')
-        console.log(selRoomsTmp)
-        // date = str2[0]
+        
+        console.log(rms,'!')
+        var rmsList = rms.replace('精緻四人房-', '精緻四人房').split(' ')
+        
+        rmsList.length = rmsList.length - 3;
+        
+        var selRoomsMerge = {}
+
+        rmsList.forEach(r => {
+          let result = roomSplit(r);
+          let rt = result.roomType;
+          let rq = result.quantity;
+          let isExist = selRoomsMerge.hasOwnProperty(rt);
+          if(isExist) {
+            selRoomsMerge[rt] += Number(rq)
+          } else {
+            selRoomsMerge[rt] = Number(rq)
+          }
+        });
+        // selRoomsTmp = rms.replace(/×(\d+) /g, ' $1間\n')
+
+        Object.keys(selRoomsMerge).forEach(key => { 
+          console.log(key); 
+          selRoomsTmp += mapBuilding(key) + ' ' + selRoomsMerge[key] + '間\n'
+        })
+
         var datea = date.split('至')[0].trim()
         var dateb = date.split('至')[1].trim()
         days = moment.duration(moment(dateb).diff(moment(datea), 'days'))
-        console.log(datea, dateb, days, selRoomsTmp)
-      
-      // for (var i=0; i<str3[0].length; i++) {
-      //   selRoomsTmp += str3[0][i]
-      //   if (str3[0][i] == '間') {
-      //     selRoomsTmp += '\n'
-      //   }
-      // }
-
 
         var priceTmp = ''
         var pricetype = $('#priceOption input:checked')
         for(var i=0;i<pricetype.length;i++){
             priceTmp += $(pricetype[i]).val()
         }
-        console.log(pricetype)
+        // console.log(pricetype)
 
         var requireTmp = []
         var requiretype = $('#requirementOption input:checked')
@@ -731,8 +735,9 @@ $(document).ready(function () {
             pushMessgae += '平台：OTA線上訂房平台\n'
         }
 
-        pushMessgae += '入住/退房日期：'+ days +'晚 \n' +
-                    date + '\n' + 
+        pushMessgae += '入住日期：' + datea + '\n' +
+                      '退房日期：' + dateb + '\n' +
+                    '共' + days +'晚 \n' +
                     '早餐：'+ eat + '\n'+
                     '房型： \n'+
                       selRoomsTmp;
@@ -757,25 +762,24 @@ $(document).ready(function () {
     pushMessgae += preknow + concat       
     console.log(pushMessgae)
    
-  console.log(pushMessgae)
 	  
-  obj.siblings('.sig').css({
-          'transform': 'translateY(40%) scale(5)',
-          'border-radius': '0',
-          'width': '100%',
-          'height': '100%'
-      }).end();
-  sig_btn.siblings('.container h3:nth-of-type(2)').css({
-      'top': '40%',
-      'z-index': '8'
-  }).end().end();
+    obj.siblings('.sig').css({
+            'transform': 'translateY(40%) scale(5)',
+            'border-radius': '0',
+            'width': '100%',
+            'height': '100%'
+        }).end();
+    sig_btn.siblings('.container h3:nth-of-type(2)').css({
+        'top': '40%',
+        'z-index': '8'
+    }).end().end();
 
-  var thisPushMessage = [
-    {
-      type:'text',
-      text:pushMessgae
-    }
-  ]
+    var thisPushMessage = [
+      {
+        type:'text',
+        text:pushMessgae
+      }
+    ]
   
 
     liff.sendMessages(thisPushMessage).then(function () {
@@ -784,7 +788,7 @@ $(document).ready(function () {
           window.alert("Error sending message: " + error);
       });
   
-}
+  }
 
   
  
@@ -803,6 +807,54 @@ $(document).ready(function () {
             }
         }
     };
+
+    function roomSplit(inputString) {
+      const regexPattern = /(.+?)×(\d+)/;
+      const matches = inputString.match(regexPattern);
+      if (matches) {
+        const roomType = matches[1].trim(); // 精緻四人房
+        const quantity = matches[2]; // 3
+        // console.log("房型：", roomType);
+        // console.log("數量：", quantity);
+        return {'roomType': roomType, 'quantity': quantity}
+      } else {
+        console.log("未找到匹配的房型和數量。");
+      } 
+    }
+
+    function mapBuilding(inputString) {
+      // let rooms = [
+      //   {room_id: "3", room_name: "A棟 山景雙人房", sham_name: "山景雙人房"},
+      //   {room_id: "4", room_name: "A棟 風呂雙人房", sham_name: "風呂雙人房"},
+      //   {room_id: "5", room_name: "A棟 海景雙人房", sham_name: "海景雙人房(2小床)"},
+      //   {room_id: "7", room_name: "A棟 山景四人房", sham_name: "山景四人房"},
+      //   {room_id: "9", room_name: "A棟 海景四人房", sham_name: "海景四人房"},	
+      //   {room_id: "10", room_name: "A棟 山海景家庭四人房", sham_name: "山海景家庭四人房"},
+      //   {room_id: "11", room_name: "A棟 VIP頂級海景四人房", sham_name: "VIP頂級海景四人房"},
+      //   {room_id: "14", room_name: "A棟 VIP頂級山海景六人房", sham_name: "VIP頂級山海景六人房"},
+      //   {room_id: "1", room_name: "B棟 簡約雙人房", sham_name: "簡約雙人房(2小床)"},
+      //   {room_id: "2", room_name: "B棟 精緻雙人房", sham_name: "精緻雙人房"},
+      //   {room_id: "6", room_name: "B棟 精緻四人房", sham_name: "精緻四人房-"},
+      //   {room_id: "6", room_name: "B棟 精緻四人房", sham_name: "精緻四人房"},
+      //   {room_id: "12", room_name: "B棟 精緻家庭六人房", sham_name: "精緻家庭六人房"},
+      //   {room_id: "13", room_name: "B棟 VIP精緻六人房", sham_name: "VIP精緻六人房"}
+      // ]
+      switch (inputString) {
+        case "山景雙人房":
+        case "風呂雙人房":
+        case "海景雙人房(2小床)":
+        case "山景四人房":
+        case "海景四人房":
+        case "山海景家庭四人房":
+        case "VIP海景四人房":
+        case "VIP山海景六人房":
+          return 'A棟·' + inputString
+          break;
+        default:
+          return 'B棟·' + inputString
+          break;
+      }
+    }
 });
 </script>
 
