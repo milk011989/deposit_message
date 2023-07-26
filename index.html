@@ -326,7 +326,7 @@ h3 {
     <div id="deadlineOption" style="margin:20px 30px;">
         <div>●訂金期限</div>
         <div class="pretty p-icon p-smooth">
-            <input type="radio" id="deadline_normal" name="deadline" value="2天內" />
+            <input type="radio" id="deadline_normal" name="deadline" value="2天內" checked />
             <div class="state p-success">
                 <label>2天內(一般)</label><br>
             </div>
@@ -391,7 +391,7 @@ h3 {
     <div id="requirementOption" style="margin:20px 30px 10px;">
         <div>●備註</div>
         <div class="pretty p-icon p-smooth">
-            <input type="checkbox" id="requirement_pet" name="requirement" value="寵物入住(一樓精緻房型)" />
+            <input type="checkbox" id="requirement_pet" name="requirement" value="寵物入住(一樓精緻房型)" checked />
             <div class="state p-success">
                 <label>寵物入住(一樓精緻房型)</label><br>
             </div>
@@ -419,7 +419,7 @@ h3 {
     <br/>
     <div id="advanced" style="margin:30px;overflow: auto;">
       <div class="pretty p-icon p-smooth">
-        <input type="checkbox" id="pet" name="pet" />
+        <input type="checkbox" id="pet" name="pet" checked />
         <div class="state p-success">
           <label for="pet">寵物入住（會附上寵物入住須知）</label>
         </div>
@@ -500,9 +500,6 @@ $(document).ready(function () {
       // Error happens during initialization
       console.log(err.code, err.message);
     });
-
-    var hasCP = false
-    var hasMP = false
 
     $('.room_book.book_type').addClass('active');
     $('.way2').hide();
