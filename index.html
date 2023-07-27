@@ -644,7 +644,10 @@ $(document).ready(function () {
         
         var selRoomsMerge = {}
 
-        rmsList.forEach(r => {
+        console.log(rmsList)
+        rmsList
+        .filter(rr => rr.trim() !== '')
+        .forEach(r => {
           let result = roomSplit(r);
           let rt = result.roomType;
           let rq = result.quantity;
@@ -806,6 +809,7 @@ $(document).ready(function () {
     };
 
     function roomSplit(inputString) {
+      console.log(inputString)
       const regexPattern = /(.+?)×(\d+)/;
       const matches = inputString.match(regexPattern);
       if (matches) {
