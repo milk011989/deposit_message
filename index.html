@@ -631,7 +631,7 @@ $(document).ready(function () {
         console.log('letter', letter)
         var lines = letter.split('\n')
         console.log(lines)
-        var saleID = lines[0].split('訂單編號: ')[0]
+        var saleID = lines[0].split('訂單編號: ')[1]
         var guest = lines[1].split('訂房人 : ')[1]
         date = lines[2].split('， ')[0]
         console.log(lines[2].split('， ')[1])
@@ -735,6 +735,7 @@ $(document).ready(function () {
             pushMessgae += '平台：OTA線上訂房平台\n'
         }
 
+        pushMessgae += '訂單編號：' + saleID + '\n';
         pushMessgae += '入住日期：' + datea + '\n' +
                       '退房日期：' + dateb + '\n' +
                     '共' + days +'晚 \n' +
