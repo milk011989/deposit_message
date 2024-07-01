@@ -684,8 +684,7 @@ $(document).ready(function () {
         if (self_requirement !== '') {
             requireTmp.push(self_requirement)
         }
-        let requirement = requireTmp.concat(',')
-        console.log(requirement)
+        let requirement = requireTmp.concat('')
 
         var stayknow = '👉🏻 預定入住須知請見：https://rich-sunshine.tw/know \n'
         var cancelknow = '👉🏻 取消訂房規定請見：https://rich-sunshine.tw/regulation \n'
@@ -693,6 +692,12 @@ $(document).ready(function () {
         var soleknow = '👉🏻 包棟入住規定請見：https://rich-sunshine.tw/news/SOLE \n'
         var travelorknow = '👉🏻 同業旅行社預訂須知： https://rich-sunshine.tw/other/promotNet202101.html \n'
         var preknow = '‼️預訂即表示同意以下民宿規定與入住須知，煩請撥空了解：\n\n' + stayknow + '\n' + cancelknow + '\n'
+
+        
+        var serviceLunch = '⊛ 預約制經典中式午餐｜https://rich-sunshine.tw/news/LUNCH \n'
+        var serviceSPA = '⊛ 預約制精油紓壓SPA｜https://rich-sunshine.tw/news/SPA \n' 
+        var serviceBBQ = '⊛ 預約制民宿烤肉｜https://rich-sunshine.tw/news/BBQ \n'
+        var serviceWelcome = '⛱︎ 額外收費之預約服務，歡迎官方LINE詢問預約： \n\n' + serviceLunch + '\n' + serviceSPA + '\n' + serviceBBQ
 
         var pushMessgae = guest + helloword;
 
@@ -760,7 +765,8 @@ $(document).ready(function () {
     if (cross) {
       pushMessgae += '⚠️您的房間在不同棟  \n\n'
     }
-    pushMessgae += preknow + concat       
+    pushMessgae += preknow + concat   
+    pushMessgae += '\n\n' + serviceWelcome 
     console.log(pushMessgae)
    
 	  
