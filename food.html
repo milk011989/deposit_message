@@ -482,22 +482,23 @@ $(document).ready(function () {
 
 
         pushMessgae += '烤肉時間：' + date + '\n';
-        pushMessgae += '烤肉方案：' + (wholetype ? 'B計畫-外燴原住民' : 'Ａ計畫-自己做大廚')  + '\n';
-        pushMessgae += '烤肉人數：' + people + '(七歲以上計算人頭)\n';
+        pushMessgae += '烤肉方案：' + (wholetype ? 'B計畫-外燴原住民烤肉' : 'Ａ計畫-自己做大廚烤肉')  + '\n';
+        pushMessgae += '烤肉人數：' + people + ' (7歲↑計人頭)\n';
 
 
         if (self_requirement !== '') {
             pushMessgae += '\n備註：' + self_requirement;
         }
         
-        pushMessgae += '\n \n'+ '烤肉總價 ' + amount + '元 \n';
+        pushMessgae += '\n \n'
+        pushMessgae += '價格：\n• 烤肉總價 ' + amount + '元 \n';
 
         if (deposited) {
-            pushMessgae += '已預付款項 '+deposit+'元，餘款於現場辦理入住時付清即可(現金或匯款)。'
+            pushMessgae += '• 已預付款項 '+deposit+'元，餘款於現場辦理入住時付清即可(現金或匯款)。'
         } else if (noprepay) {
-            pushMessgae += '免預付款項，全款於現場辦理入住時付清即可(現金或匯款)。'
+            pushMessgae += '• 免預付款項，全款於現場辦理入住時付清即可(現金或匯款)。'
         } else {
-            pushMessgae += '烤肉活動預付款項 ' + deposit + '元，麻煩您於【'+deadline+'】完成轉帳，並回傳帳號後五碼予我們確認後，才算完成預訂唷！   \n\n' + bank
+            pushMessgae += '• 烤肉活動預付款項 【' + deposit + '】元，敬請於【'+deadline+'】完成轉帳，並回傳帳號後五碼予我們確認！   \n\n' + bank
 
         }   
         
