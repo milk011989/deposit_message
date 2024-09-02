@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+  <title>訂烤肉確認訊息</title>
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.2.45/css/materialdesignicons.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+<!-- <link rel="stylesheet" href="./style.css"> -->
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #e2e2e2;
+}
+
+svg {
+  position: fixed;
+  top: 10px;
+  left: 0px;
+}
+
+.container {
+  position: relative;
+  top: 60px;
+  display: block;
+  margin: 0 auto 80px auto;
+  width: 90%;
+  max-width: 500px;
+  background: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+h2 {
+  padding: 40px;
+  font-weight: lighter;
+  text-transform: uppercase;
+  color: #414141;
+}
+
+input {
+  display: block;
+  height: 60px;
+  width: 90%;
+  margin: 0 auto;
+  border: none;
+}
+.form input::placeholder {
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+.form input:hover, input:focus, input:active:focus {
+  color: #ff5722;
+  outline: none;
+  border-bottom: 1px solid #ff5722;
+}
+.form label.outer {
+      position: relative;
+      display: block;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: .5px;
+      color: #939393; }
+
+
+.email,
+.pwd {
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 20px;
+  font-family: 'Open Sans', sans-serif;
+  color: #858585;
+  font-weight: lighter;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+#requirement, #letter,  #letter_sup {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    color: #858585;
+    font-weight: lighter;
+    display: block;
+    height: 90px;
+    width: 90%;
+    margin: 0 auto;
+    resize: none;
+}
+#letter {
+  height: 120px;
+}
+#letter_sup {
+  height: 240px;
+}
+
+.link{
+  text-decoration:none;
+  display:block;
+  margin:10px;
+  text-align: center;
+  text-transform:uppercase;
+  color:#ff5722;
+  font-weight:lighter;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+.hint{
+  text-decoration:none;
+  display:block;
+  margin:10px;
+  text-align: left;
+  text-transform:uppercase;
+  color:#858585;
+  font-weight:lighter;
+  -webkit-transition:.5s;
+  transition:.5s;
+  font-size: 12px;
+}
+
+button {
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  width: 100%;
+  height: 60px;
+  margin-top: -10px;
+  border: none;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  -webkit-transition: .5s;
+  transition: .5s;
+  background: #e2e2e2;
+}
+
+button.sent {
+  background: #ff5722;
+}
+button span {
+  position: absolute;
+  display: block;
+  margin: -10px 20%;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+button:hover span {
+  -webkit-transform: translateX(30px);
+  transform: translateX(30px);
+}
+
+.reg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: translateY(-100%) scale(1);
+  transform: translateY(-100%) scale(1);
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  background: #673ab7;
+  z-index: 5;
+  -webkit-transition: .8s ease-in-out;
+  transition: .8s ease-in-out;
+}
+
+.sig {
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transform: translateY(-100%) scale(1);
+  transform: translateY(-100%) scale(1);
+  display: block;
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: #ff5722;
+  z-index: 5;
+  -webkit-transition: .8s ease-in-out;
+  transition: .8s ease-in-out;
+}
+
+h3 {
+  position: absolute;
+  top: -100%;
+  left: 20%;
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: rgba(255, 255, 255, 0.3);
+  -webkit-transition: .3s ease-in-out 1.2s;
+  transition: .3s ease-in-out 1.2s;
+}
+
+.booking-info, .booking-type {
+  margin: 30px;
+}
+.booking-info > div {
+  display: flex;
+}
+.booking-info div label {
+  flex-basis: 80px;
+  /* font-size: 12px;; */
+  align-items: center;
+  display: flex;
+}
+.booking-info div input {
+  flex: 1;
+}
+.book_type {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    background: darkseagreen;
+    color: #fff;
+    opacity: .5;
+}
+.book_type.active {
+  opacity: 1;
+}
+.bbq_version_item {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    background: olive;
+    color: #fff;
+    opacity: .5;
+    font-size: 14px;
+}
+.bbq_version_item.active {
+  opacity: 1;
+}
+
+.for_bbq_version_new > div {
+    width: 100%;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div style="display:flex;">
+    <div class="room_book book_type">
+      <span>訂烤肉</span>
+    </div>
+  </div>
+
+  <div id="room_form" class="form">
+    <input type="hidden" id="lineUserId" class="email" placeholder="LineID">
+
+    <div class="booking-info">
+        <div><label for="guest">訂房編號</label><input type="text" id="bookid" class="email" placeholder="訂房的訂單編號(6碼)"></div>  
+        <div><label for="guest">訂房大名</label><input type="text" id="guest" class="email" placeholder="訂房大名"></div>
+    </div>
+    
+    <div class="booking-type">
+        <div>●烤肉方案</div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="bookingtype_normal" name="bookingtype" value="normal"  />
+            <div class="state p-success">
+                <label>Ａ計畫-自己做大廚</label><br>
+            </div>
+        </div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="bookingtype_whole" name="bookingtype" value="whole" />
+            <div class="state p-success">
+                <label>Ｂ計畫-外燴原住民</label><br>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="booking-info">
+      <div>●烤肉資訊</div>
+      <div><label for="date">預訂時間</label><input type="datetime-local" id="date" class="email" value="" placeholder="預訂烤肉時間"  ></div>
+      <div><label for="people">烤肉人數</label><input type="number" id="people" class="email" value="" placeholder="預訂烤肉人數，七歲以上計算人頭"  ></div>
+      <div><label for="amount">烤肉總價</label><input type="number" id="amount" class="email" value=""  placeholder="烤肉總價" ></div>
+      <div><label for="deposit">預付款項</label><input type="number" id="deposit" class="email" value=""  placeholder="預設預付全額款項" ></div>
+    </div>
+
+
+    <div id="deadlineOption" style="margin:20px 30px;">
+        <div>●訂金期限</div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="deadline_normal" name="deadline" value="2天內" checked />
+            <div class="state p-success">
+                <label>3天內(一般)</label><br>
+            </div>
+        </div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="deadline_long" name="deadline" value="7天內" />
+            <div class="state p-success">
+                <label>7天內</label><br>
+            </div>
+        </div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="deadline_tomorrow" name="deadline" value="明日內(14:00前)" />
+            <div class="state p-success">
+                <label>明日內(14:00前)</label><br>
+            </div>
+        </div>
+        <div class="pretty p-icon p-smooth">
+            <input type="radio" id="deadline_today" name="deadline" value="今日內(14:00前)" />
+            <div class="state p-success">
+                <label>今日內(14:00前)</label><br>
+            </div>
+        </div>
+    </div>
+
+    <textarea id="requirement" placeholder="其他備註"></textarea>
+    <br/>
+
+    <div id="advanced" style="margin:30px;overflow: auto;">
+      <div class="pretty p-icon p-smooth">
+        <input type="radio" id="depositing" name="deposite" />
+        <div class="state p-success">
+            <label for="depositing">A.需預付款項（提供需匯款金額及匯款資訊）</label>
+        </div>
+        </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="radio" id="deposited" name="deposite" />
+        <div class="state p-success">
+          <label for="deposited">B.已付全額款項（顯示已付款項，不會有匯款資訊）</label>
+        </div>
+      </div>
+      <div class="pretty p-icon p-smooth">
+        <input type="radio" id="noprepay" name="deposite" />
+        <div class="state p-success">
+          <label for="noprepay">C.免預付款項（全額現場付款，不會有匯款資訊）</label>
+        </div>
+      </div>
+      <!-- <div class="pretty p-icon p-smooth">
+        <input type="checkbox" id="modify" name="modify" />
+        <div class="state p-success">
+          <label for="modify">●訂單內容修改（會有：已為您修改如下）</label><br>
+        </div>
+      </div> -->
+    </div>
+ 
+    <br/>
+    <button type="button" class="signin sent">
+      <span>送出</span>
+    </button>
+    <h3>訊息已送出 !</h3>
+    <div class="reg"></div>
+    <div class="sig"></div>
+</div>
+ 
+ 
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <!-- Load LIFF SDK -->
+    <!-- <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script> -->
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
+
+<script>
+  var vConsole = new VConsole();
+
+
+
+$(document).ready(function () {
+    liff
+    .init({
+      liffId: "1635824694-K8Pk50pb", // Use own liffId
+    })
+    .then(() => {
+      // Start to use liff's api
+    })
+    .catch((err) => {
+      // Error happens during initialization
+      console.log(err.code, err.message);
+    });
+
+    $('.room_book.book_type').addClass('active');
+    $('#depositing').prop('checked',true);
+    
+
+    $('#amount').change(function (event) {
+      var val = event.target.value
+      var ori_dep_val = parseInt(val*1)
+      $('#deposit').val(parseInt(ori_dep_val/100)*100)
+    })
+
+    $('input[name=bookingtype]').click(function (event) {
+      var val = event.target.value
+      console.log(val)
+      $('#deadline_normal').prop('checked',true);
+    })
+
+
+    
+    var reg2_btn = $('.container .register2');
+    var reg_btn = $('.container .register');
+    var sig_btn = $('.container .signin');
+    /*------- back button ----------------------*/
+    var back_btn = $('.container .back');
+    reg_btn.click(function (e) {
+        e.preventDefault();
+        $(this).siblings('.reg').css({
+            'transform': 'translateY(40%) scale(5)',
+            'border-radius': '0',
+            'width': '100%',
+            'height': '100%'
+        }).end();
+        reg_btn.siblings('.container h3:nth-of-type(1)').css({
+            'top': '40%',
+            'z-index': '8'
+        }).end().end();
+    });
+
+    sig_btn.on('click', function (e) {
+        e.preventDefault();
+        var obj = $(this)
+		    sendMail(obj, 'room');
+    });
+
+
+	function sendMail(obj, messagetype) {
+        $('.signin').attr('disabled', true)
+
+        
+        var concat = '👉🏻 有問題都可以使用官方LINE詢問 line://ti/p/@bmj3918o \n'
+        
+        var bank = '🔸匯款資訊🔸 \n'+
+        '國泰世華銀行 013 \n'+
+        '分行名稱：台東分行 \n'+
+        '戶名：黃建彰 \n'+
+        '銀行帳號：102-50-617130-7 \n'
+
+        var saleID = $('#bookid').val()
+        var guest = $('#guest').val()
+
+        var date =  $('#date').val().replace('T', ' ')
+        var people =  $('#people').val()
+        var amount =  $('#amount').val()
+        var deposit =  $('#deposit').val()
+        var deadline =  $('input[name="deadline"]:checked').val()
+        var self_requirement =  $('.container #requirement').val()
+
+        var wholetype =  $('#bookingtype_whole').prop('checked') //外燴BBQ
+
+        var deposited =  $('#deposited').prop('checked')
+        var modify =  $('#modify').prop('checked')
+        var noprepay =  $('#noprepay').prop('checked')
+
+        var helloword = ' 先生/小姐您好 (訂房訂單編號:' + saleID + ')，您的富杉晴民宿烤肉方案預訂'
+
+        var stayknow = '👉🏻 預定烤肉活動注意事項請見：https://rich-sunshine.tw/news/BBQ \n'
+        var preknow = stayknow + '\n'
+
+
+        var pushMessgae = guest + helloword;
+
+
+        if (modify) {
+            pushMessgae += '，已為您修改'
+        }
+
+        pushMessgae += '如下：\n\n'
+
+
+        pushMessgae += '烤肉時間：' + date + '\n';
+        pushMessgae += '烤肉方案：' + (wholetype ? 'B計畫-外燴原住民' : 'Ａ計畫-自己做大廚')  + '\n';
+        pushMessgae += '烤肉人數：' + people + '(七歲以上計算人頭)\n';
+
+
+        if (self_requirement !== '') {
+            pushMessgae += '\n備註：' + self_requirement;
+        }
+        
+        pushMessgae += '\n \n'+ '烤肉總價 ' + amount + '元 \n';
+
+        if (deposited) {
+            pushMessgae += '已預付款項 '+deposit+'元，餘款於現場辦理入住時付清即可(現金或匯款)。'
+        } else if (noprepay) {
+            pushMessgae += '免預付款項，全款於現場辦理入住時付清即可(現金或匯款)。'
+        } else {
+            pushMessgae += '烤肉活動預付款項 ' + deposit + '元，麻煩您於【'+deadline+'】完成轉帳，並回傳帳號後五碼予我們確認後，才算完成預訂唷！   \n\n' + bank
+
+        }   
+        
+        pushMessgae += '\n\n'
+
+        pushMessgae += preknow + concat   
+        console.log(pushMessgae)
+   
+	  
+    obj.siblings('.sig').css({
+            'transform': 'translateY(40%) scale(5)',
+            'border-radius': '0',
+            'width': '100%',
+            'height': '100%'
+        }).end();
+    sig_btn.siblings('.container h3:nth-of-type(2)').css({
+        'top': '40%',
+        'z-index': '8'
+    }).end().end();
+
+    var thisPushMessage = [
+      {
+        type:'text',
+        text:pushMessgae
+      }
+    ]
+  
+
+    liff.sendMessages(thisPushMessage).then(function () {
+          window.alert("Sent");
+      }).catch(function (error) {
+          window.alert("Error sending message: " + error);
+      });
+  
+  }
+
+  
+ 
+
+    function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+    
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+    
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
+
+
+});
+</script>
+
+</body>
+</html>
